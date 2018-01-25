@@ -1,6 +1,4 @@
 import { AppRegistry } from 'react-native';
-// import App from './App';
-import List from './ListComponent'
+import App from './app/App';
 
-
-AppRegistry.registerComponent('IceAndFire', () => List);
+AppRegistry.registerComponent('IceAndFire', () => App);

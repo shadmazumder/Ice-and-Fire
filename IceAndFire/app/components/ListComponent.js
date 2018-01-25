@@ -6,17 +6,14 @@ import {
 } from 'react-native';
 
 export default class List extends Component{
+    
     render(){
         return (
-            <Text>Bello !!!</Text>
+            <View style = {this.props.containerStyle}>
+                <Text style = {this.props.headerStyle}>{this.props.headerText}</Text>
+
+            </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F5FCFF',
-    },
-});
 

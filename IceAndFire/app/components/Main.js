@@ -4,20 +4,27 @@ import {
     Text,
     View
 } from 'react-native';
-
 import React, { Component } from 'react';
+import List from './ListComponent'
 
 export default class Main extends Component {
+    state = {
+        headerTextAlign: 'center', //`left`,
+        headerText: 'Header Goes here',
+        headerTextDecoration: 'none', //'underline',
+        headerTextFontSize: 18 //20
+    }
+
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native!
-            </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit App.js
-            </Text>
-            </View>
+            <List containerStyle={styles.container} 
+            headerStyle = {[
+                styles.header, 
+                {textAlign: this.state.headerTextAlign}, 
+                {textDecorationLine: this.state.headerTextDecoration},
+                {fontSize: this.state.headerTextFontSize}
+            ]}
+            headerText =  {this.state.headerText}/>
         );
     }
 }
@@ -25,19 +32,12 @@ export default class Main extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        marginTop: 20
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+    header: {
+        flex: 1,
+        fontWeight: 'bold',
+        margin: 8,
+    }
 });
 
