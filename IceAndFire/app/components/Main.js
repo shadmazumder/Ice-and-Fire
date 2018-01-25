@@ -1,13 +1,16 @@
+import React, { Component } from 'react';
 import {
     Platform,
     StyleSheet,
     Text,
-    View
+    View,
+    FlatList
 } from 'react-native';
-import React, { Component } from 'react';
-import List from './ListComponent'
+
+import ContainerList from './ListComponent'
 
 export default class Main extends Component {
+
     state = {
         headerTextAlign: 'center', //`left`,
         headerText: 'Header Goes here',
@@ -17,14 +20,16 @@ export default class Main extends Component {
 
     render() {
         return (
-            <List containerStyle={styles.container} 
-            headerStyle = {[
-                styles.header, 
-                {textAlign: this.state.headerTextAlign}, 
-                {textDecorationLine: this.state.headerTextDecoration},
-                {fontSize: this.state.headerTextFontSize}
-            ]}
-            headerText =  {this.state.headerText}/>
+            <ContainerList 
+                containerStyle={styles.container} 
+                headerStyle = {[
+                    styles.header, 
+                    {textAlign: this.state.headerTextAlign}, 
+                    {textDecorationLine: this.state.headerTextDecoration},
+                    {fontSize: this.state.headerTextFontSize}
+                ]}
+                headerText =  {this.state.headerText}
+            />
         );
     }
 }
