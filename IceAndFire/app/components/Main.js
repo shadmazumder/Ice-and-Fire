@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    FlatList
-} from 'react-native';
-
-import ContainerList from './ListComponent'
+import {StyleSheet} from 'react-native';
+import ContainerList from './ListComponent';
 
 export default class Main extends Component {
 
@@ -40,9 +33,9 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     header: {
-        flex: 1,
-        fontWeight: 'bold',
-        margin: 8,
+        flex: 0,
+        marginTop: 8,
+        fontWeight: 'bold'
     }
 });
 
