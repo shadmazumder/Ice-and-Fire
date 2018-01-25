@@ -1,15 +1,22 @@
 import React from 'react';
-
+import {create} from 'apisauce';
 export default class ConnectionManager {
-  //properties
+  static myInstance = null;
+
+  api = create ({
+    baseURL: 'https://www.anapioficeandfire.com/api/',
+    headers: {
+      // 'Access-Control-Allow-Origin': '*/*',
+      Accept: 'application/vnd.anapioficeandfire+json',
+      version: 1,
+      // 'Content-Type': 'application/json',
+    },
+  });
+
   booksUrl = 'https://www.anapioficeandfire.com/api/books';
   charactersUrl = 'https://www.anapioficeandfire.com/api/characters';
   housesUrl = 'https://www.anapioficeandfire.com/api/houses';
 
-  //singletone instance
-  static myInstance = null;
-
-  //state
   state = {
     allCharacters: [],
     allHouses: [],
@@ -17,19 +24,35 @@ export default class ConnectionManager {
     isLoading: false,
   };
 
-  sharedInstacne () {
+  static shareInstance () {
     if (this.myInstance == null) {
-      myInstance = new ConnectionManager ();
+      this.myInstance = new ConnectionManager ();
     }
-    return myInstance;
+    return this.myInstance;
   }
 
-  // get books from remote
+  getCharacters () {
+    this.api.get ('books').then (response => {
+      console.log (response);
+    });
+    // fetch (this.booksUrl, {
+    //   // mode: 'cors',
+    //   method: 'get',
+    //   headers: {
+    //     'Access-Control-Allow-Origin': '*/*',
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //     Authorization: 'Token token=xxxxx',
+    //     // 'Access-Control-Allow-Origin': '*',
+    //   },
+    // })
+    //   .then (response => {
+    //     console.log (response);
+    //   })
+    //   .catch (error => {
+    //     console.error (error);
+    //   });
+  }
+
   getBooks () {}
-
-  //get characters from remote
-  getCharacters () {}
-
-  //get houses from remote
-  getHouses () {}
 }
