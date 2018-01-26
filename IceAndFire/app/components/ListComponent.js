@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {List, ListItem} from 'react-native-elements';
+import {List} from 'react-native-elements';
 import {
     Text,
     View,
@@ -41,12 +41,8 @@ export default class ContainerList extends Component{
                                     }} >
                     <FlatList 
                         data = {this.state.data}
-                        renderItem = {({ item }) => (
-                            <ListItem 
-                                containerStyle = {{borderBottomWidth: 0}}
-                                title = {item}
-                                subtitle = {item}
-                            />
+                        renderItem = {({item}) => (
+                            this.props.listItem (item)
                         )}
                         // keyExtractor = {item=>item.id}
                         ItemSeparatorComponent = {this.getItemSeparator}

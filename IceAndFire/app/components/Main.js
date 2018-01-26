@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 import ContainerList from './ListComponent';
+import BasicListItem from './BasicListItem';
+// import AvatarListItem from './AvatarListItem'
 
 export default class Main extends Component {
 
@@ -9,6 +11,17 @@ export default class Main extends Component {
         headerText: 'Header Goes here',
         headerTextDecoration: 'none', //'underline',
         headerTextFontSize: 18 //20
+    }
+
+    renderListItem = (item)=>{
+
+        return(
+            <BasicListItem item = {item}/>
+        )
+
+        // return(
+        //     <AvatarListItem item = {item}/>
+        // )
     }
 
     render() {
@@ -22,6 +35,7 @@ export default class Main extends Component {
                     {fontSize: this.state.headerTextFontSize}
                 ]}
                 headerText =  {this.state.headerText}
+                listItem = {this.renderListItem}
             />
         );
     }

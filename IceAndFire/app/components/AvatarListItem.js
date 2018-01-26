@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {ListItem} from 'react-native-elements';
 
-export default class BasicListItem extends Component{
+export default class AvatarListItem extends Component{
 
     render(){
         return(
             <ListItem 
-                roundAvatar
+                // roundAvatar
                 containerStyle = {{borderBottomWidth: 0}}
                 title = {this.props.item}
-                subtitle = {this.props.item}
-                avatar = {this.props.avatarUrl}
+                // subtitle = {this.props.item}
+                // avatar = {this.props.avatarUrl}
             />
         )
     }
