@@ -58,4 +58,18 @@ export default class ConnectionManager {
         console.error (error);
       });
   }
+
+  //get all houses
+  getAllHouses () {
+    this.api
+      .get ('houses')
+      .then (response => response.data)
+      .then (responseHouses => {
+        this.allHouses = responseHouses;
+      })
+      .catch (error => {
+        // here load from json file
+        console.error (error);
+      });
+  }
 }
