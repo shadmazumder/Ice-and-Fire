@@ -7,6 +7,8 @@ import BasicListItem from './BasicListItem';
 export default class Main extends Component {
 
     state = {
+        items: ['Item 1', 'Item 2', 'Item 3'],
+
         headerTextAlign: 'center', //`left`,
         headerText: 'Header Goes here',
         headerTextDecoration: 'none', //'underline',
@@ -35,6 +37,7 @@ export default class Main extends Component {
                     {fontSize: this.state.headerTextFontSize}
                 ]}
                 headerText =  {this.state.headerText}
+                items = {this.state.items}
                 listItem = {this.renderListItem}
             />
         );

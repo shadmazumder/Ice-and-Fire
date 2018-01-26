@@ -8,10 +8,6 @@ import {
 
 
 export default class ContainerList extends Component{
-    
-    state = {
-        data: ['Item 1', 'Item 2', 'Item 3']
-    }
 
     getItemSeparator = ()=> {
         return(
@@ -40,7 +36,7 @@ export default class ContainerList extends Component{
                                         borderBottomWidth: 0
                                     }} >
                     <FlatList 
-                        data = {this.state.data}
+                        data = {this.props.items}
                         renderItem = {({item}) => (
                             this.props.listItem (item)
                         )}
