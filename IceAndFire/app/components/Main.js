@@ -18,7 +18,7 @@ export default class Main extends Component {
 
   componentDidMount () {
     let connecitom = new ConnectionManager ();
-    connecitom.getCharacters ();
+    connecitom.getCharacterDetails ('91');
   }
 }
 

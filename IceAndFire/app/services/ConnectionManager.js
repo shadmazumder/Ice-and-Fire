@@ -46,12 +46,14 @@ export default class ConnectionManager {
   }
 
   // get all books
-  getBooks () {
+  getAllBooks () {
     this.api
       .get ('books')
       .then (response => response.data)
       .then (responseBooks => {
+        // we can return characters from it.
         this.allBooks = responseBooks;
+        console.log (this.allBooks);
       })
       .catch (error => {
         // here load from json file
@@ -65,10 +67,25 @@ export default class ConnectionManager {
       .get ('houses')
       .then (response => response.data)
       .then (responseHouses => {
+        console.log (responseHouses);
         this.allHouses = responseHouses;
       })
       .catch (error => {
         // here load from json file
+        console.error (error);
+      });
+  }
+  //get singe charcters details
+  getCharacterDetails (characterId) {
+    console.log (`characters/${characterId}`);
+    this.api
+      .get (`characters/${characterId}`)
+      .then (response => response.data)
+      .then (charcterDetails => {
+        console.log (charcterDetails);
+        return charcterDetails;
+      })
+      .catch (error => {
         console.error (error);
       });
   }
