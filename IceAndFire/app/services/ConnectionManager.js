@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {create} from 'apisauce';
-export default class ConnectionManager {
+export default class ConnectionManager extends Component {
   static myInstance = null;
+  static shareInstance () {
+    if (this.myInstance == null) {
+      this.myInstance = new ConnectionManager ();
+    }
+    return this.myInstance;
+  }
 
   api = create ({
     baseURL: 'https://www.anapioficeandfire.com/api/',
@@ -24,34 +30,20 @@ export default class ConnectionManager {
     isLoading: false,
   };
 
-  static shareInstance () {
-    if (this.myInstance == null) {
-      this.myInstance = new ConnectionManager ();
-    }
-    return this.myInstance;
-  }
-
   getCharacters () {
-    this.api.get ('books').then (response => {
-      console.log (response);
-    });
-    // fetch (this.booksUrl, {
-    //   // mode: 'cors',
-    //   method: 'get',
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*/*',
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //     Authorization: 'Token token=xxxxx',
-    //     // 'Access-Control-Allow-Origin': '*',
-    //   },
-    // })
-    //   .then (response => {
-    //     console.log (response);
-    //   })
-    //   .catch (error => {
-    //     console.error (error);
-    //   });
+    this.api
+      .get ('characters')
+      .then (response => response.data)
+      .then (responseData => {
+        this.setState ({
+          allCharacters: [],
+        });
+        console.log (responseData);
+        // return responseJson.movies;
+      })
+      .catch (error => {
+        console.error (error);
+      });
   }
 
   getBooks () {}
