@@ -29,13 +29,14 @@ export default class ConnectionManager {
     },
   });
 
+  //get all characters
   getCharacters () {
     this.api
       .get ('characters')
       .then (response => response.data)
-      .then (responseData => {
+      .then (responseCharacters => {
         // we can return characters from it.
-        this.allCharcters = responseData;
+        this.allCharcters = responseCharacters;
         console.log (this.allCharcters);
       })
       .catch (error => {
@@ -44,5 +45,17 @@ export default class ConnectionManager {
       });
   }
 
-  getBooks () {}
+  // get all books
+  getBooks () {
+    this.api
+      .get ('books')
+      .then (response => response.data)
+      .then (responseBooks => {
+        this.allBooks = responseBooks;
+      })
+      .catch (error => {
+        // here load from json file
+        console.error (error);
+      });
+  }
 }
