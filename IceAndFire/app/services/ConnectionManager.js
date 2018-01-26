@@ -1,47 +1,45 @@
 import React, {Component} from 'react';
 import {create} from 'apisauce';
-export default class ConnectionManager extends Component {
-  static myInstance = null;
+export default class ConnectionManager {
+  /* static myInstance = null;
   static shareInstance () {
     if (this.myInstance == null) {
       this.myInstance = new ConnectionManager ();
     }
     return this.myInstance;
-  }
 
-  api = create ({
-    baseURL: 'https://www.anapioficeandfire.com/api/',
-    headers: {
-      // 'Access-Control-Allow-Origin': '*/*',
-      Accept: 'application/vnd.anapioficeandfire+json',
-      version: 1,
-      // 'Content-Type': 'application/json',
-    },
-  });
-
-  booksUrl = 'https://www.anapioficeandfire.com/api/books';
-  charactersUrl = 'https://www.anapioficeandfire.com/api/characters';
-  housesUrl = 'https://www.anapioficeandfire.com/api/houses';
-
-  state = {
+    // this is not mounted component, so it shows error if we want to set state of unmounted component
+    state = {
     allCharacters: [],
     allHouses: [],
     allBooks: [],
     isLoading: false,
   };
 
+  }*/
+
+  allCharcters = [];
+  allHouses = [];
+  allBooks = [];
+  api = create ({
+    baseURL: 'https://www.anapioficeandfire.com/api/',
+    headers: {
+      Accept: 'application/vnd.anapioficeandfire+json',
+      version: 1,
+    },
+  });
+
   getCharacters () {
     this.api
       .get ('characters')
       .then (response => response.data)
       .then (responseData => {
-        this.setState ({
-          allCharacters: [],
-        });
-        console.log (responseData);
-        // return responseJson.movies;
+        // we can return characters from it.
+        this.allCharcters = responseData;
+        console.log (this.allCharcters);
       })
       .catch (error => {
+        // here load from json file
         console.error (error);
       });
   }
