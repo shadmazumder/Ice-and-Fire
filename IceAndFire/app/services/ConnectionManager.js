@@ -76,9 +76,9 @@ export default class ConnectionManager {
       });
   }
   //get single charcters details
-  getCharacterDetailsWith (characterId) {
+  getCharacterDetailsWith (characterUrl) {
     this.api
-      .get (`characters/${characterId}`)
+      .get (`${characterUrl}`)
       .then (response => response.data)
       .then (charcterDetails => {
         console.log (charcterDetails);
@@ -90,11 +90,13 @@ export default class ConnectionManager {
   }
 
   //get single book details
-  getBookDetailsWith (bookId) {
+  getBookDetailsWith (bookUrl) {
     this.api
-      .get (`books/${bookId}`)
+      .get (`${bookUrl}`)
       .then (response => response.data)
       .then (bookDetails => {
+        console.log (bookDetails);
+
         return bookDetails;
       })
       .catch (error => {
@@ -103,11 +105,12 @@ export default class ConnectionManager {
   }
 
   //get single house details
-  getHouseDetailsWith (houseId) {
+  getHouseDetailsWith (houseUrl) {
     this.api
-      .get (`houses/${houseId}`)
+      .get (`${houseUrl}`)
       .then (response => response.data)
       .then (houseDetails => {
+        console.log (houseDetails);
         return houseDetails;
       })
       .catch (error => {

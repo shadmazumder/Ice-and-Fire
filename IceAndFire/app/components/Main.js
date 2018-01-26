@@ -18,7 +18,9 @@ export default class Main extends Component {
 
   componentDidMount () {
     let connecitom = new ConnectionManager ();
-    connecitom.getCharacterDetails ('91');
+    connecitom.getCharacterDetailsWith (
+      'https://www.anapioficeandfire.com/api/characters/1'
+    );
   }
 }
 
