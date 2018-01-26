@@ -75,15 +75,40 @@ export default class ConnectionManager {
         console.error (error);
       });
   }
-  //get singe charcters details
-  getCharacterDetails (characterId) {
-    console.log (`characters/${characterId}`);
+  //get single charcters details
+  getCharacterDetailsWith (characterId) {
     this.api
       .get (`characters/${characterId}`)
       .then (response => response.data)
       .then (charcterDetails => {
         console.log (charcterDetails);
         return charcterDetails;
+      })
+      .catch (error => {
+        console.error (error);
+      });
+  }
+
+  //get single book details
+  getBookDetailsWith (bookId) {
+    this.api
+      .get (`books/${bookId}`)
+      .then (response => response.data)
+      .then (bookDetails => {
+        return bookDetails;
+      })
+      .catch (error => {
+        console.error (error);
+      });
+  }
+
+  //get single house details
+  getHouseDetailsWith (houseId) {
+    this.api
+      .get (`houses/${houseId}`)
+      .then (response => response.data)
+      .then (houseDetails => {
+        return houseDetails;
       })
       .catch (error => {
         console.error (error);
