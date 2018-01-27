@@ -7,7 +7,7 @@ import ConnectionManager from '../services/ConnectionManager';
 
 export default class Main extends Component {
   state = {
-    items: ['Item 1', 'Item 2', 'Item 3'],
+    items: [],
 
     headerTextAlign: 'center', //`left`,
     headerText: 'Header Goes here',
@@ -18,6 +18,12 @@ export default class Main extends Component {
     houses: [],
     characters: [],
     books: [],
+  };
+
+  updateItems = items => {
+    console.log (items);
+    this.setState ({items: items});
+    console.log (this.state.items);
   };
 
   updateHouses = houses => {
@@ -45,14 +51,14 @@ export default class Main extends Component {
   componentDidMount () {
     let connectionManger = new ConnectionManager ();
 
-    connectionManger.updateHouses = this.updateHouses;
-    connectionManger.getAllHouses ();
+    // connectionManger.updateHouses = this.updateHouses;
+    // connectionManger.getAllHouses ();
 
-    connectionManger.updateBooks = this.updateBooks;
+    connectionManger.updateBooks = this.updateItems;
     connectionManger.getAllBooks ();
 
-    connectionManger.updateCharaters = this.updateCharacters;
-    connectionManger.getCharacters ();
+    // connectionManger.updateCharaters = this.updateCharacters;
+    // connectionManger.getCharacters ();
   }
   render () {
     return (
@@ -65,7 +71,7 @@ export default class Main extends Component {
           {fontSize: this.state.headerTextFontSize},
         ]}
         headerText={this.state.headerText}
-        items={this.state.items}
+        // items={this.state.items}
         listItem={this.renderListItem}
       />
     );

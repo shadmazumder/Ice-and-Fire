@@ -3,10 +3,6 @@ import {List, ListItem} from 'react-native-elements';
 import {Text, View, FlatList} from 'react-native';
 
 export default class ContainerList extends Component {
-  state = {
-    data: ['Item 1', 'Item 2', 'Item 3'],
-  };
-
   getItemSeparator = () => {
     return (
       <View
@@ -36,12 +32,12 @@ export default class ContainerList extends Component {
           }}
         >
           <FlatList
-            data={this.state.data}
+            data={this.props.items}
             renderItem={({item}) => (
               <ListItem
                 containerStyle={{borderBottomWidth: 0}}
-                title={item}
-                subtitle={item}
+                // title={item}
+                // subtitle={item}
               />
             )}
             // keyExtractor = {item=>item.id}
