@@ -6,7 +6,7 @@ export default class AvatarListItem extends Component {
     return (
       <ListItem
         // roundAvatar
-        // containerStyle={{borderBottomWidth: 0}}
+        containerStyle={{borderBottomWidth: 0}}
         title={this.props.item.name}
         subtitle={`${this.props.item.publisher}, ${this.props.item.country}`}
         // avatar = {this.props.avatarUrl}

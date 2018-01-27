@@ -12,8 +12,8 @@ export default class ContainerList extends Component {
       <View
         style={{
           height: 1,
-          width: '85%',
-          marginLeft: '15%',
+          width: '94%',
+          marginLeft: '6%',
           backgroundColor: '#CED0CE',
         }}
       />
