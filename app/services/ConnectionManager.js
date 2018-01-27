@@ -18,6 +18,11 @@ export default class ConnectionManager {
 
   }*/
 
+  // constructor (props) {
+  //   // super (props);
+  //   console.log (this.props.name);
+  // }
+
   allCharcters = [];
   allHouses = [];
   allBooks = [];
@@ -29,15 +34,28 @@ export default class ConnectionManager {
     },
   });
 
+  updateBooks = books => {
+    this.props.updateBooks (books);
+  };
+
+  updateCharaters = characters => {
+    this.props.updateCharaters (characters);
+  };
+
+  updateHouses = houses => {
+    this.props.updateHouses (houses);
+  };
+
   //get all characters
   getCharacters () {
     this.api
       .get ('characters')
       .then (response => response.data)
       .then (responseCharacters => {
+        this.updateCharaters (responseCharacters);
         // we can return characters from it.
-        this.allCharcters = responseCharacters;
-        console.log (this.allCharcters);
+        // this.allCharcters = responseCharacters;
+        // console.log (this.allCharcters);
       })
       .catch (error => {
         // here load from json file
@@ -52,8 +70,9 @@ export default class ConnectionManager {
       .then (response => response.data)
       .then (responseBooks => {
         // we can return characters from it.
-        this.allBooks = responseBooks;
-        console.log (this.allBooks);
+        // this.allBooks = responseBooks;
+        // console.log (this.allBooks);
+        this.updateBooks (responseBooks);
       })
       .catch (error => {
         // here load from json file
@@ -67,8 +86,9 @@ export default class ConnectionManager {
       .get ('houses')
       .then (response => response.data)
       .then (responseHouses => {
-        console.log (responseHouses);
-        this.allHouses = responseHouses;
+        // console.log (responseHouses);
+        // this.allHouses = responseHouses;
+        this.updateHouses (responseHouses);
       })
       .catch (error => {
         // here load from json file
