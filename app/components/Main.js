@@ -3,11 +3,11 @@ import {StyleSheet} from 'react-native';
 import ContainerList from './ListComponent';
 import BasicListItem from './BasicListItem';
 import ConnectionManager from '../services/ConnectionManager';
-// import AvatarListItem from './AvatarListItem'
+import AvatarListItem from './AvatarListItem';
 
 export default class Main extends Component {
   state = {
-    items: ['Item 1', 'Item 2', 'Item 3'],
+    items: [],
 
     headerTextAlign: 'center', //`left`,
     headerText: 'Header Goes here',
@@ -15,17 +15,27 @@ export default class Main extends Component {
     headerTextFontSize: 18, //20
   };
 
+  updateItems = items => {
+    this.setState ({items: items});
+  };
+
   renderListItem = item => {
     return <BasicListItem item={item} />;
 
-    // return(
-    //     <AvatarListItem item = {item}/>
-    // )
+    // return <AvatarListItem item={item} />;
   };
 
   componentDidMount () {
     let connectionManger = new ConnectionManager ();
-    connectionManger.getAllHouses ();
+
+    // connectionManger.updateHouses = this.updateItems;
+    // connectionManger.getAllHouses ();
+
+    connectionManger.updateBooks = this.updateItems;
+    connectionManger.getAllBooks ();
+
+    // connectionManger.updateCharaters = this.updateItems;
+    // connectionManger.getCharacters ();
   }
   render () {
     return (

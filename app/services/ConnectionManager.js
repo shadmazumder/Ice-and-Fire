@@ -18,9 +18,11 @@ export default class ConnectionManager {
 
   }*/
 
-  allCharcters = [];
-  allHouses = [];
-  allBooks = [];
+  // constructor (props) {
+  //   // super (props);
+  //   console.log (this.props.name);
+  // }
+
   api = create ({
     baseURL: 'https://www.anapioficeandfire.com/api/',
     headers: {
@@ -29,15 +31,19 @@ export default class ConnectionManager {
     },
   });
 
+  updateBooks = books => {};
+
+  updateCharaters = characters => {};
+
+  updateHouses = houses => {};
+
   //get all characters
   getCharacters () {
     this.api
       .get ('characters')
       .then (response => response.data)
       .then (responseCharacters => {
-        // we can return characters from it.
-        this.allCharcters = responseCharacters;
-        console.log (this.allCharcters);
+        this.updateCharaters (responseCharacters);
       })
       .catch (error => {
         // here load from json file
@@ -51,9 +57,7 @@ export default class ConnectionManager {
       .get ('books')
       .then (response => response.data)
       .then (responseBooks => {
-        // we can return characters from it.
-        this.allBooks = responseBooks;
-        console.log (this.allBooks);
+        this.updateBooks (responseBooks);
       })
       .catch (error => {
         // here load from json file
@@ -67,8 +71,7 @@ export default class ConnectionManager {
       .get ('houses')
       .then (response => response.data)
       .then (responseHouses => {
-        console.log (responseHouses);
-        this.allHouses = responseHouses;
+        this.updateHouses (responseHouses);
       })
       .catch (error => {
         // here load from json file
