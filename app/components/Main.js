@@ -25,6 +25,15 @@ export default class Main extends Component {
     this.setState ({houses: houses});
   };
 
+  updateCharacters = characters => {
+    console.log (characters);
+    this.setState ({characters: characters});
+  };
+
+  updateBooks = books => {
+    console.log (books);
+    this.setState ({books: books});
+  };
   renderListItem = item => {
     return <BasicListItem item={item} />;
 
@@ -35,8 +44,15 @@ export default class Main extends Component {
 
   componentDidMount () {
     let connectionManger = new ConnectionManager ();
+
     connectionManger.updateHouses = this.updateHouses;
     connectionManger.getAllHouses ();
+
+    connectionManger.updateBooks = this.updateBooks;
+    connectionManger.getAllBooks ();
+
+    connectionManger.updateCharaters = this.updateCharacters;
+    connectionManger.getCharacters ();
   }
   render () {
     return (
