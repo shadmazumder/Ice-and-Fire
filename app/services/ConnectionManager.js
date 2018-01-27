@@ -31,11 +31,7 @@ export default class ConnectionManager {
     },
   });
 
-  updateBooks = books => {};
-
-  updateCharaters = characters => {};
-
-  updateHouses = houses => {};
+  updateItems = items => {};
 
   //get all characters
   getCharacters () {
@@ -43,7 +39,7 @@ export default class ConnectionManager {
       .get ('characters')
       .then (response => response.data)
       .then (responseCharacters => {
-        this.updateCharaters (responseCharacters);
+        this.updateItems (responseCharacters);
       })
       .catch (error => {
         // here load from json file
@@ -57,7 +53,7 @@ export default class ConnectionManager {
       .get ('books')
       .then (response => response.data)
       .then (responseBooks => {
-        this.updateBooks (responseBooks);
+        this.updateItems (responseBooks);
       })
       .catch (error => {
         // here load from json file
@@ -71,7 +67,7 @@ export default class ConnectionManager {
       .get ('houses')
       .then (response => response.data)
       .then (responseHouses => {
-        this.updateHouses (responseHouses);
+        this.updateItems (responseHouses);
       })
       .catch (error => {
         // here load from json file

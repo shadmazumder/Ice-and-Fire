@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet} from 'react-native';
+import ContainerList from "./ListComponent";
 import ConnectionManager from '../services/ConnectionManager';
 import AvatarListItem from './AvatarListItem';
-import ContainerList from "./ListComponent";
 
 export default class HouseScreen extends React.Component {
     
@@ -28,7 +28,7 @@ export default class HouseScreen extends React.Component {
     componentDidMount () {
 
         let connectionManger = new ConnectionManager ();
-        connectionManger.updateHouses = this.updateItems;
+        connectionManger.updateItems = this.updateItems;
         connectionManger.getAllHouses ();
     }
 
