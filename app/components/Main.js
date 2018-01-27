@@ -21,8 +21,9 @@ export default class Main extends Component {
   };
 
   updateItems = items => {
-    console.log (items);
     this.setState ({items: items});
+    console.log ('state books');
+
     console.log (this.state.items);
   };
 
@@ -71,7 +72,7 @@ export default class Main extends Component {
           {fontSize: this.state.headerTextFontSize},
         ]}
         headerText={this.state.headerText}
-        // items={this.state.items}
+        items={this.state.items}
         listItem={this.renderListItem}
       />
     );
