@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
 import ContainerList from './ListComponent';
+import BasicListItem from './BasicListItem';
+// import AvatarListItem from './AvatarListItem'
 
 export default class Main extends Component {
 
     state = {
+        items: ['Item 1', 'Item 2', 'Item 3'],
+
         headerTextAlign: 'center', //`left`,
         headerText: 'Header Goes here',
         headerTextDecoration: 'none', //'underline',
         headerTextFontSize: 18 //20
+    }
+
+    renderListItem = (item)=>{
+
+        return(
+            <BasicListItem item = {item}/>
+        )
+
+        // return(
+        //     <AvatarListItem item = {item}/>
+        // )
     }
 
     render() {
@@ -22,6 +37,8 @@ export default class Main extends Component {
                     {fontSize: this.state.headerTextFontSize}
                 ]}
                 headerText =  {this.state.headerText}
+                items = {this.state.items}
+                listItem = {this.renderListItem}
             />
         );
     }
