@@ -13,6 +13,16 @@ export default class Main extends Component {
     headerText: 'Header Goes here',
     headerTextDecoration: 'none', //'underline',
     headerTextFontSize: 18, //20
+
+    //temporary state, before redux
+    houses: [],
+    characters: [],
+    books: [],
+  };
+
+  updateHouses = houses => {
+    console.log (houses);
+    this.setState ({houses: houses});
   };
 
   renderListItem = item => {
@@ -25,6 +35,7 @@ export default class Main extends Component {
 
   componentDidMount () {
     let connectionManger = new ConnectionManager ();
+    connectionManger.updateHouses = this.updateHouses;
     connectionManger.getAllHouses ();
   }
   render () {
