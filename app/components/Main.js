@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
+import BaseNavigator from '.././Navigation'
 import ContainerList from './ListComponent';
 import BasicListItem from './BasicListItem';
 import ConnectionManager from '../services/ConnectionManager';
 // import AvatarListItem from './AvatarListItem'
 
-import { StackNavigator, TabNavigator } from 'react-navigation';
-import HouseScreen from './HouseScreen'
-import BookScreen from './BookScreen'
+// import { StackNavigator, TabNavigator } from 'react-navigation';
+// import HouseScreen from './HouseScreen'
+// import BookScreen from './BookScreen'
 
 export default class Main extends Component {
   state = {
@@ -32,23 +33,24 @@ export default class Main extends Component {
     connectionManger.getAllHouses ();
   }
   render () {
-    return (
 
-      <RootNavigator/>
+    return < BaseNavigator />
 
-      // <ContainerList
-      //   containerStyle={styles.container}
-      //   headerStyle={[
-      //     styles.header,
-      //     {textAlign: this.state.headerTextAlign},
-      //     {textDecorationLine: this.state.headerTextDecoration},
-      //     {fontSize: this.state.headerTextFontSize},
-      //   ]}
-      //   headerText={this.state.headerText}
-      //   items={this.state.items}
-      //   listItem={this.renderListItem}
-      // />
-    );
+
+    // return (
+    //   <ContainerList
+    //     containerStyle={styles.container}
+    //     headerStyle={[
+    //       styles.header,
+    //       {textAlign: this.state.headerTextAlign},
+    //       {textDecorationLine: this.state.headerTextDecoration},
+    //       {fontSize: this.state.headerTextFontSize},
+    //     ]}
+    //     headerText={this.state.headerText}
+    //     items={this.state.items}
+    //     listItem={this.renderListItem}
+    //   />
+    // );
   }
 }
 
@@ -64,13 +66,13 @@ const styles = StyleSheet.create ({
   },
 });
 
-const MainScreenNavigator = TabNavigator({
-  House: { screen: HouseScreen },
-  Book: { screen: BookScreen },
-});
+// const MainScreenNavigator = TabNavigator({
+//   House: { screen: HouseScreen },
+//   Book: { screen: BookScreen },
+// });
 
-const RootNavigator = StackNavigator({
-  Main: {
-      screen: MainScreenNavigator,
-  },
-});
+// const RootNavigator = StackNavigator({
+//   Main: {
+//       screen: MainScreenNavigator,
+//   },
+// });
