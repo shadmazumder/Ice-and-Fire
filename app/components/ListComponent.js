@@ -4,7 +4,7 @@ import {Text, View, FlatList} from 'react-native';
 
 export default class ContainerList extends Component {
   state = {
-    data: ['Item 1', 'Item 2', 'Item 3'],
+    // data: ['Item 44', 'Item 2', 'Item 3'],
   };
 
   getItemSeparator = () => {
@@ -36,15 +36,9 @@ export default class ContainerList extends Component {
           }}
         >
           <FlatList
-            data={this.state.data}
-            renderItem={({item}) => (
-              <ListItem
-                containerStyle={{borderBottomWidth: 0}}
-                title={item}
-                subtitle={item}
-              />
-            )}
-            // keyExtractor = {item=>item.id}
+            data={this.props.items}
+            renderItem={({item}) => this.props.listItem (item)}
+            keyExtractor={item => item.url}
             ItemSeparatorComponent={this.getItemSeparator}
           />
         </List>
