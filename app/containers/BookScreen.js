@@ -18,7 +18,7 @@ class BookScreen extends React.Component {
     };
 
     renderListItem = item => {
-        return <BasicListItem item={item} onPress = {this.itemOnPress}/>;
+        return <BasicListItem item={item} onPress={this.itemOnPress} />;
     };
 
     itemOnPress = (item) => {

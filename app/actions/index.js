@@ -6,7 +6,8 @@ export const ACTION_TYPES = {
     HOUSE_LOADING_INITIATED: "HOUSE_LOADING",
     HOUSE_LOADING_COMPLETE: 'HOUSE_LOADING_COMPLETE',
     BOOK_LOADING_INITIATED: "BOOK_LOADING_INITIATED",
-    BOOK_LOADING_COMPLETED: "BOOK_LOADING_COMPLETED"
+    BOOK_LOADING_COMPLETED: "BOOK_LOADING_COMPLETED",
+    SINGLE_HOUSE: "SINGLE_HOUSE",
 }
 
 export function getAllHouses() {
@@ -39,3 +40,9 @@ export function getAllBooks() {
     };
 }
 
+export function setHouse(item) {
+    return {
+        type: ACTION_TYPES.SINGLE_HOUSE,
+        payload: item
+    }
+};

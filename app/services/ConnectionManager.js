@@ -61,16 +61,8 @@ export default class ConnectionManager {
   }
   //get single charcters details
   getCharacterDetailsWith(characterUrl) {
-    this.api
-      .get(`${characterUrl}`)
-      .then(response => response.data)
-      .then(charcterDetails => {
-        console.log(charcterDetails);
-        return charcterDetails;
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    return this.api
+      .get(`${characterUrl}`);
   }
 
   //get single book details
