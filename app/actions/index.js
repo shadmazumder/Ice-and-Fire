@@ -9,10 +9,6 @@ export const ACTION_TYPES = {
     BOOK_LOADING_COMPLETED: "BOOK_LOADING_COMPLETED"
 }
 
-let updateItems = items => {
-
-}
-
 export function getAllHouses() {
     return dispatch => {
         dispatch({
