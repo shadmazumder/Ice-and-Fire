@@ -24,7 +24,7 @@ class HouseScreen extends React.Component {
         console.log('pinged me !!!')
         console.log(item);
 
-        // this.props.navigation.navigate('DetailsScreen', item);
+        this.props.navigation.navigate('HouseDetails', item);
     }
 
     componentDidMount() {
@@ -81,6 +81,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-
 
 export default connect(mapToStateProps, mapDispatchToProps)(HouseScreen);

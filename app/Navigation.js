@@ -24,7 +24,7 @@ const HouseStack = StackNavigator({
 
 const BaseNavigator = TabNavigator({
     House: {
-        screen: HouseScreen,
+        screen: HouseStack,
         navigationOptions: {
             tabBarLabel: 'House',
             tabBarIcon: ({ tintColor }) =>
