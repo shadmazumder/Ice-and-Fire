@@ -11,6 +11,19 @@ import CharacterList from './CharacterList';
 
 class HouseDetails extends Component {
 
+  _deleteUnnecessaryKeys(houseInfo) {
+    // Removing unnecessary keys from dict
+    delete houseInfo.overlord;
+    delete houseInfo.ancestralWeapons;
+    delete houseInfo.cadetBranches;
+    delete houseInfo.diedOut;
+    delete houseInfo.founder;
+    delete houseInfo.founded;
+    delete houseInfo.heir;
+    delete houseInfo.seats;
+    return houseInfo
+  }
+
   processHouseInfo() {
     let charUrlList = this.props.house.swornMembers;
     let houseInfo = this.props.house;
@@ -19,18 +32,12 @@ class HouseDetails extends Component {
     if (charUrlList.length > 0) {
       this.props.getCharacterList(charUrlList);
     }
-    // Removing unnecessary keys from dict
-    // delete houseInfo.swornMembers;
-    delete houseInfo.overLord;
-    delete houseInfo.ancestralWeapons;
-    delete houseInfo.cadetBranches;
-    delete houseInfo.diedOut;
-
+    houseInfo = this._deleteUnnecessaryKeys(houseInfo)
     return houseInfo
   }
   render() {
     let houseInfo = this.processHouseInfo();
-    houseInfo.currentLord = this.props.character;
+    houseInfo.currentLord = this.props.character; // Set current Lord from redux
     return (
       <View style={styles.container}>
         <DetailComponent

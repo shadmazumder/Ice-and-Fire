@@ -77,6 +77,8 @@ export function getCharacter(characterUrl) {
                     type: ACTION_TYPES.SINGLE_CHARACTER,
                     payload: resp.data.name
                 })
+            }, error => {
+                console.log(error)
             })
         }
 

@@ -5,20 +5,20 @@ import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
-import BasicListItem from '../components/BasicListItem';
+import CharacterListItem from '../components/CharacterListItem';
 
 import { getAllBooks } from '../actions/index';
 
 class CharacterList extends React.Component {
     state = {
-        headerTextAlign: 'center',
-        headerText: 'Character List',
+        headerTextAlign: 'left',
+        headerText: 'Sworn Members',
         headerTextDecoration: 'none',
         headerTextFontSize: 20
     };
 
     renderListItem = item => {
-        return <BasicListItem item={item} onPress={this.itemOnPress} />;
+        return <CharacterListItem item={item} onPress={this.itemOnPress} />;
     };
 
     itemOnPress = (item) => {
