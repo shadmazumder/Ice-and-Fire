@@ -5,6 +5,7 @@ import { Icon } from 'react-native-elements'
 import HouseScreen from './containers/HouseScreen';
 import BookScreen from './containers/BookScreen';
 import HouseDetailsScreen from './containers/HouseDetailsScreen';
+import CharacterDetailsScreen from './containers/CharacterDetailsScreen';
 import DetailsScreen from './components/DetailsScreen'
 
 const HouseStack = StackNavigator({
@@ -21,6 +22,12 @@ const HouseStack = StackNavigator({
             title: 'House Details',
         },
     },
+    CharacterDetails: {
+        screen: CharacterDetailsScreen,
+        navigationOptions: {
+            title: 'Character Details',
+        },
+    }
 });
 
 const BookStack = StackNavigator({

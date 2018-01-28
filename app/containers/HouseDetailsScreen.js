@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import DetailComponent from '../components/DetailComponent';
-import { getCharacterList, getCharacter } from '../actions';
+import { getCharacterList, getCurrentLord } from '../actions';
 
 import CharacterList from './CharacterList';
 
@@ -37,14 +37,16 @@ class HouseDetails extends Component {
   }
   render() {
     let houseInfo = this.processHouseInfo();
-    houseInfo.currentLord = this.props.character; // Set current Lord from redux
+    houseInfo.currentLord = this.props.current_lord; // Set current Lord from redux
     return (
       <View style={styles.container}>
         <DetailComponent
           title={this.props.house.name}
           values={houseInfo}
         />
-        <CharacterList />
+        <CharacterList
+          navigation={this.props.navigation}
+        />
       </View>
     );
   }
@@ -53,14 +55,14 @@ class HouseDetails extends Component {
 function mapToStateProps(state) {
   return {
     house: state.house,
-    character: state.character
+    current_lord: state.current_lord
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     getCharacterList: getCharacterList,
-    getCurrentLord: getCharacter,
+    getCurrentLord: getCurrentLord,
   }, dispatch);
 }
 

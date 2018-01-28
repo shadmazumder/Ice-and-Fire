@@ -9,7 +9,8 @@ export const ACTION_TYPES = {
     BOOK_LOADING_COMPLETED: "BOOK_LOADING_COMPLETED",
     SINGLE_HOUSE: "SINGLE_HOUSE",
     CHARACTER_LIST_FETCHED: "CHARACTER_LIST_FETCHED",
-    SINGLE_CHARACTER: "SINGLE_CHARACTER"
+    SINGLE_CHARACTER: "SINGLE_CHARACTER",
+    CURRENT_LORD: "CURRENT_LORD"
 }
 
 export function getAllHouses() {
@@ -68,13 +69,13 @@ export function getCharacterList(charUrlList) {
     }
 }
 
-export function getCharacter(characterUrl) {
+export function getCurrentLord(characterUrl) {
     return dispatch => {
         if (characterUrl.length > 0) {
             let connectionManger = new ConnectionManager();
             connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
                 dispatch({
-                    type: ACTION_TYPES.SINGLE_CHARACTER,
+                    type: ACTION_TYPES.CURRENT_LORD,
                     payload: resp.data.name
                 })
             }, error => {
@@ -82,5 +83,12 @@ export function getCharacter(characterUrl) {
             })
         }
 
+    }
+}
+
+export function setCharacter(characterObject) {
+    return {
+        type: ACTION_TYPES.SINGLE_CHARACTER,
+        payload: characterObject
     }
 }

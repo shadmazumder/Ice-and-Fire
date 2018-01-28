@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from 'react-native';
 
-import { camelToNormalCase } from '../services';
+import { camelToNormalCase, renderListIfNecessary } from '../services';
 
 export default class DetailComponent extends Component {
 
@@ -16,7 +16,7 @@ export default class DetailComponent extends Component {
                             {camelToNormalCase(key)}
                         </Text>
                         <Text style={styles.detailsValueLabel}>
-                            {value}
+                            {renderListIfNecessary(value)}
                         </Text>
                     </ View>
                 )

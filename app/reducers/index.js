@@ -4,6 +4,7 @@ import SingleHouseReducer from './SingleHouse';
 import BookReducer from './Book';
 import CharacterReducer from './Character';
 import SingleCharacterReducer from './SingleCharacter';
+import CurrentLordReducer from './CurrentLord';
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     books: BookReducer,
     house: SingleHouseReducer,
     characters: CharacterReducer,
-    character: SingleCharacterReducer
+    character: SingleCharacterReducer,
+    current_lord: CurrentLordReducer
 });
 
 export default rootReducer;

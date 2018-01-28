@@ -7,7 +7,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import ContainerList from "../components/ListComponent";
 import CharacterListItem from '../components/CharacterListItem';
 
-import { getAllBooks } from '../actions/index';
+import { setCharacter } from '../actions/index';
 
 class CharacterList extends React.Component {
     state = {
@@ -22,7 +22,8 @@ class CharacterList extends React.Component {
     };
 
     itemOnPress = (item) => {
-        this.props.navigation.navigate('BookDetails', item);
+        this.props.navigation.navigate('CharacterDetails', item);
+        this.props.setCharacter(item);
     }
 
     render() {
@@ -61,7 +62,7 @@ function mapToStateProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getAllBooks: getAllBooks
+        setCharacter: setCharacter
     }, dispatch);
 }
 
