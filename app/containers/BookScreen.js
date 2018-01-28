@@ -21,6 +21,13 @@ class BookScreen extends React.Component {
         return <BasicListItem item={item} />;
     };
 
+    itemOnPress = (item) => {
+        console.log('pinged me !!!')
+        console.log(item);
+
+        // this.props.navigation.navigate('DetailsScreen', item);
+    }
+
     componentDidMount() {
         this.props.getAllBooks();
     }
