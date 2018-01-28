@@ -3,6 +3,7 @@ import { StyleSheet} from 'react-native';
 import ContainerList from "./ListComponent";
 import ConnectionManager from '../services/ConnectionManager';
 import AvatarListItem from './AvatarListItem';
+import {NavigationActions} from 'react-navigation';
 
 export default class HouseScreen extends React.Component {
     
@@ -22,8 +23,14 @@ export default class HouseScreen extends React.Component {
 
     renderListItem = item => {
 
-        return <AvatarListItem item={item} />;
+        return <AvatarListItem item={item} onPress = {this.itemOnPress}/>;
     };
+
+    itemOnPress = (item) => {
+        console.log('pinged me !!!')
+        console.log(item);
+        this.props.navigation.navigate('Details');
+    }
 
     componentDidMount () {
 

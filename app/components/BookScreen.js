@@ -3,6 +3,7 @@ import { StyleSheet} from 'react-native';
 import ContainerList from "./ListComponent";
 import ConnectionManager from '../services/ConnectionManager';
 import BasicListItem from './BasicListItem';
+// from 'react-navigation'
 
 export default class BookScreen extends React.Component {
     state = {
@@ -21,8 +22,13 @@ export default class BookScreen extends React.Component {
 
     renderListItem = item => {
 
-        return <BasicListItem item={item} />;
+        return <BasicListItem item={item} onPress = {this.itemOnPress} />;
     };
+
+    itemOnPress(item){
+        
+        this.props.navigation.navigate('DetailsScreen', item);
+    }
 
     componentDidMount () {
 

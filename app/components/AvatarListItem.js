@@ -10,6 +10,7 @@ export default class AvatarListItem extends Component {
         title={this.props.item.name}
         subtitle={`${this.props.item.publisher}, ${this.props.item.country}`}
         // avatar = {this.props.avatarUrl}
+        onPress = {()=>{this.props.onPress(this.props.item)}}
       />
     );
   }
