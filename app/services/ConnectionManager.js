@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {create} from 'apisauce';
+import React, { Component } from 'react';
+import { create } from 'apisauce';
 export default class ConnectionManager {
   /* static myInstance = null;
   static shareInstance () {
@@ -23,7 +23,7 @@ export default class ConnectionManager {
   //   console.log (this.props.name);
   // }
 
-  api = create ({
+  api = create({
     baseURL: 'https://www.anapioficeandfire.com/api/',
     headers: {
       Accept: 'application/vnd.anapioficeandfire+json',
@@ -31,89 +31,89 @@ export default class ConnectionManager {
     },
   });
 
-  updateItems = items => {};
+  updateItems = items => { };
 
   //get all characters
-  getCharacters () {
+  getCharacters() {
     this.api
-      .get ('characters')
-      .then (response => response.data)
-      .then (responseCharacters => {
-        this.updateItems (responseCharacters);
+      .get('characters')
+      // .then (response => response.data)
+      .then(responseCharacters => {
+        this.updateItems(responseCharacters);
       })
-      .catch (error => {
+      .catch(error => {
         // here load from json file
-        console.error (error);
+        console.error(error);
       });
   }
 
   // get all books
-  getAllBooks () {
+  getAllBooks() {
     this.api
-      .get ('books')
-      .then (response => response.data)
-      .then (responseBooks => {
-        this.updateItems (responseBooks);
+      .get('books')
+      .then(response => response.data)
+      .then(responseBooks => {
+        this.updateItems(responseBooks);
       })
-      .catch (error => {
+      .catch(error => {
         // here load from json file
-        console.error (error);
+        console.error(error);
       });
   }
 
   //get all houses
-  getAllHouses () {
-    this.api
-      .get ('houses')
-      .then (response => response.data)
-      .then (responseHouses => {
-        this.updateItems (responseHouses);
-      })
-      .catch (error => {
-        // here load from json file
-        console.error (error);
-      });
+  getAllHouses() {
+    return this.api
+      .get('houses')
+    // .then(response => response.data)
+    // .then(responseHouses => {
+    //   this.updateItems(responseHouses);
+    // })
+    // .catch(error => {
+    //   // here load from json file
+    //   console.error(error);
+    // });
   }
   //get single charcters details
-  getCharacterDetailsWith (characterUrl) {
+  getCharacterDetailsWith(characterUrl) {
     this.api
-      .get (`${characterUrl}`)
-      .then (response => response.data)
-      .then (charcterDetails => {
-        console.log (charcterDetails);
+      .get(`${characterUrl}`)
+      .then(response => response.data)
+      .then(charcterDetails => {
+        console.log(charcterDetails);
         return charcterDetails;
       })
-      .catch (error => {
-        console.error (error);
+      .catch(error => {
+        console.error(error);
       });
   }
 
   //get single book details
-  getBookDetailsWith (bookUrl) {
+  getBookDetailsWith(bookUrl) {
     this.api
-      .get (`${bookUrl}`)
-      .then (response => response.data)
-      .then (bookDetails => {
-        console.log (bookDetails);
+      .get(`${bookUrl}`)
+      .then(response => response.data)
+      .then(bookDetails => {
+        console.log(bookDetails);
 
         return bookDetails;
       })
-      .catch (error => {
-        console.error (error);
+      .catch(error => {
+        console.error(error);
       });
   }
 
   //get single house details
-  getHouseDetailsWith (houseUrl) {
+  getHouseDetailsWith(houseUrl) {
     this.api
-      .get (`${houseUrl}`)
-      .then (response => response.data)
-      .then (houseDetails => {
-        console.log (houseDetails);
+      .get(`${houseUrl}`)
+      .then(response => response.data)
+      .then(houseDetails => {
+        console.log(houseDetails);
         return houseDetails;
       })
-      .catch (error => {
-        console.error (error);
+      .catch(error => {
+        console.error(error);
       });
   }
 }

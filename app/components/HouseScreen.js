@@ -1,35 +1,26 @@
 import React, { Component } from 'react';
-import { StyleSheet} from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { StyleSheet } from 'react-native';
+
 import ContainerList from "./ListComponent";
-import ConnectionManager from '../services/ConnectionManager';
 import AvatarListItem from './AvatarListItem';
+import { getAllHouses } from '../actions/index';
 
-export default class HouseScreen extends React.Component {
-    
+class HouseScreen extends React.Component {
     state = {
-
-        items: [],
         headerTextAlign: 'center',
         headerText: 'The Houses',
         headerTextDecoration: 'none',
         headerTextFontSize: 20
     };
 
-    updateItems = items => {
-
-        this.setState ({items: items});
-    };
-
     renderListItem = item => {
-
         return <AvatarListItem item={item} />;
     };
 
-    componentDidMount () {
-
-        let connectionManger = new ConnectionManager ();
-        connectionManger.updateItems = this.updateItems;
-        connectionManger.getAllHouses ();
+    componentDidMount() {
+        this.props.getAllHouses();
     }
 
     render() {
@@ -38,26 +29,41 @@ export default class HouseScreen extends React.Component {
                 containerStyle={styles.container}
                 headerStyle={[
                     styles.header,
-                    {textAlign: this.state.headerTextAlign},
-                    {textDecorationLine: this.state.headerTextDecoration},
-                    {fontSize: this.state.headerTextFontSize},
+                    { textAlign: this.state.headerTextAlign },
+                    { textDecorationLine: this.state.headerTextDecoration },
+                    { fontSize: this.state.headerTextFontSize },
                 ]}
                 headerText={this.state.headerText}
-                items={this.state.items}
+                items={this.props.houses}
                 listItem={this.renderListItem}
             />
         );
     }
 }
 
-const styles = StyleSheet.create ({
+function mapToStateProps(state) {
+    return {
+        houses: state.houses
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        getAllHouses: getAllHouses
+    }, dispatch);
+}
+
+const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      marginTop: 20,
+        flex: 1,
+        marginTop: 20,
     },
     header: {
-      flex: 0,
-      marginTop: 8,
-      fontWeight: 'bold',
+        flex: 0,
+        marginTop: 8,
+        fontWeight: 'bold',
     },
-  });
+});
+
+
+export default connect(mapToStateProps, mapDispatchToProps)(HouseScreen);
