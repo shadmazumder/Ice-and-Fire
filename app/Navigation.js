@@ -23,7 +23,7 @@ const HouseStack = StackNavigator({
 });
 
 const BookStack = StackNavigator({
-    House: {
+    Book: {
         screen: BookScreen,
         navigationOptions: {
             header: null,
