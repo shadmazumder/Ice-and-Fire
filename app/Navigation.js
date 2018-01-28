@@ -22,6 +22,22 @@ const HouseStack = StackNavigator({
     },
 });
 
+const BookStack = StackNavigator({
+    House: {
+        screen: BookScreen,
+        navigationOptions: {
+            header: null,
+        },
+    },
+
+    BookDetails: {
+        screen: DetailsScreen,
+        navigationOptions:{
+            title: 'Details',
+        },
+    },
+});
+
 const BaseNavigator = TabNavigator({
     House: {
         screen: HouseStack,
@@ -33,13 +49,13 @@ const BaseNavigator = TabNavigator({
     },
 
     Book: {
-        screen: BookScreen,
+        screen: BookStack,
         navigationOptions: {
             tabBarLabel: 'Book',
             tabBarIcon: ({ tintColor }) =>
                 <Icon name="book" size={35} color={tintColor} />,
         },
     },
-})
+});
 
 export default BaseNavigator;

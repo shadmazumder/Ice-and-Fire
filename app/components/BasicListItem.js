@@ -8,7 +8,7 @@ export default class BasicListItem extends Component {
         containerStyle = {{borderBottomWidth: 0}}
         title = {this.props.item.name}
         subtitle = {`${this.props.item.publisher}, ${this.props.item.country}`}
-        onPress = {() => this.props.onPress}
+        onPress = {()=>{this.props.onPress(this.props.item)}}
       />
     );
   }
