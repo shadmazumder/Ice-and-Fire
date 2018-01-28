@@ -8,6 +8,8 @@ export const ACTION_TYPES = {
     BOOK_LOADING_INITIATED: "BOOK_LOADING_INITIATED",
     BOOK_LOADING_COMPLETED: "BOOK_LOADING_COMPLETED",
     SINGLE_HOUSE: "SINGLE_HOUSE",
+    CHARACTER_LIST_FETCHED: "CHARACTER_LIST_FETCHED",
+    SINGLE_CHARACTER: "SINGLE_CHARACTER"
 }
 
 export function getAllHouses() {
@@ -46,3 +48,37 @@ export function setHouse(item) {
         payload: item
     }
 };
+
+
+export function getCharacterList(charUrlList) {
+    return dispatch => {
+        let characterList = [];
+        charUrlList.map((characterUrl) => {
+            let connectionManger = new ConnectionManager();
+            connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
+                characterList.push(resp.data);
+                if (characterList.length == charUrlList.length) {
+                    dispatch({
+                        type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
+                        payload: characterList
+                    })
+                }
+            })
+        })
+    }
+}
+
+export function getCharacter(characterUrl) {
+    return dispatch => {
+        if (characterUrl.length > 0) {
+            let connectionManger = new ConnectionManager();
+            connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
+                dispatch({
+                    type: ACTION_TYPES.SINGLE_CHARACTER,
+                    payload: resp.data.name
+                })
+            })
+        }
+
+    }
+}

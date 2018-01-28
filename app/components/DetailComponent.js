@@ -9,7 +9,7 @@ export default class DetailComponent extends Component {
     renderItem() {
         let items = [];
         for (const [key, value] of Object.entries(this.props.values)) {
-            if (value && key != 'url') {
+            if (value && key != 'url' && key != 'swornMembers') {
                 items.push(
                     <View key={key} >
                         <Text style={styles.detailsKeyLabel}>
