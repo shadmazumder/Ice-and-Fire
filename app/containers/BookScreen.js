@@ -1,29 +1,41 @@
 import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
 
-import ContainerList from "./ListComponent";
-import AvatarListItem from './AvatarListItem';
-import { getAllHouses } from '../actions/index';
+import ContainerList from "../components/ListComponent";
+import BasicListItem from '../components/BasicListItem';
 
-class HouseScreen extends React.Component {
+import { getAllBooks } from '../actions/index';
+
+class BookScreen extends React.Component {
     state = {
         headerTextAlign: 'center',
-        headerText: 'The Houses',
+        headerText: 'The Books',
         headerTextDecoration: 'none',
         headerTextFontSize: 20
     };
 
     renderListItem = item => {
-        return <AvatarListItem item={item} />;
+        return <BasicListItem item={item} />;
     };
 
     componentDidMount() {
-        this.props.getAllHouses();
+        this.props.getAllBooks();
     }
 
     render() {
+        if (this.props.books.length == 0) {
+            return (
+                <Spinner
+                    visible={true}
+                    textContent={"Loading..."}
+                    textStyle={{ color: '#FFF' }}
+                />
+            )
+        }
+
         return (
             <ContainerList
                 containerStyle={styles.container}
@@ -34,7 +46,7 @@ class HouseScreen extends React.Component {
                     { fontSize: this.state.headerTextFontSize },
                 ]}
                 headerText={this.state.headerText}
-                items={this.props.houses}
+                items={this.props.books}
                 listItem={this.renderListItem}
             />
         );
@@ -43,13 +55,13 @@ class HouseScreen extends React.Component {
 
 function mapToStateProps(state) {
     return {
-        houses: state.houses
+        books: state.books
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getAllHouses: getAllHouses
+        getAllBooks: getAllBooks
     }, dispatch);
 }
 
@@ -62,8 +74,7 @@ const styles = StyleSheet.create({
         flex: 0,
         marginTop: 8,
         fontWeight: 'bold',
-    },
+    }
 });
 
-
-export default connect(mapToStateProps, mapDispatchToProps)(HouseScreen);
+export default connect(mapToStateProps, mapDispatchToProps)(BookScreen);

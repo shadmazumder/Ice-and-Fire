@@ -27,3 +27,19 @@ export function getAllHouses() {
         })
     };
 }
+
+export function getAllBooks() {
+    return dispatch => {
+        dispatch({
+            type: ACTION_TYPES.BOOK_LOADING_INITIATED,
+        });
+        let connectionManger = new ConnectionManager();
+        connectionManger.getAllBooks().then(resp => {
+            dispatch({
+                type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
+                payload: resp.data
+            })
+        })
+    };
+}
+

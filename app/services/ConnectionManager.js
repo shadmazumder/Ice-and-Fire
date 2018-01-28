@@ -49,30 +49,15 @@ export default class ConnectionManager {
 
   // get all books
   getAllBooks() {
-    this.api
+    return this.api
       .get('books')
-      .then(response => response.data)
-      .then(responseBooks => {
-        this.updateItems(responseBooks);
-      })
-      .catch(error => {
-        // here load from json file
-        console.error(error);
-      });
+
   }
 
   //get all houses
   getAllHouses() {
     return this.api
       .get('houses')
-    // .then(response => response.data)
-    // .then(responseHouses => {
-    //   this.updateItems(responseHouses);
-    // })
-    // .catch(error => {
-    //   // here load from json file
-    //   console.error(error);
-    // });
   }
   //get single charcters details
   getCharacterDetailsWith(characterUrl) {
