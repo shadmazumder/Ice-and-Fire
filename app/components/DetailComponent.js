@@ -21,7 +21,6 @@ export default class DetailComponent extends Component {
                     </ View>
                 )
             }
-
         }
         return items
     }
