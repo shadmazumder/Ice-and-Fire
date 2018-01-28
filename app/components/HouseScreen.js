@@ -6,7 +6,12 @@ import AvatarListItem from './AvatarListItem';
 import {NavigationActions} from 'react-navigation';
 
 export default class HouseScreen extends React.Component {
-    
+
+    constructor(navigation){
+        super(navigation)
+        console.log(navigation)
+    }
+
     state = {
 
         items: [],
@@ -29,7 +34,8 @@ export default class HouseScreen extends React.Component {
     itemOnPress = (item) => {
         console.log('pinged me !!!')
         console.log(item);
-        this.props.navigation.navigate('Details');
+
+        // this.props.navigation.navigate('DetailsScreen', item);
     }
 
     componentDidMount () {
