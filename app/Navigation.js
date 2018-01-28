@@ -1,24 +1,24 @@
 import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import HouseScreen from './components/HouseScreen';
-import BookScreen from './components/BookScreen';
-import {Icon} from 'react-native-elements'
-const BaseNavigator = TabNavigator ({
+import HouseScreen from './containers/HouseScreen';
+import BookScreen from './containers/BookScreen';
+import { Icon } from 'react-native-elements'
+const BaseNavigator = TabNavigator({
     House: {
         screen: HouseScreen,
-        navigationOptions:{
+        navigationOptions: {
             tabBarLabel: 'House',
-            tabBarIcon: ({ tintColor }) => 
-                    <Icon name="home" size={35} color={tintColor}/>,
+            tabBarIcon: ({ tintColor }) =>
+                <Icon name="home" size={35} color={tintColor} />,
         },
     },
 
-    Book:{
+    Book: {
         screen: BookScreen,
-        navigationOptions:{
+        navigationOptions: {
             tabBarLabel: 'Book',
-            tabBarIcon: ({ tintColor }) => 
-                    <Icon name="book" size={35} color={tintColor}/>,
+            tabBarIcon: ({ tintColor }) =>
+                <Icon name="book" size={35} color={tintColor} />,
         },
     },
 })
