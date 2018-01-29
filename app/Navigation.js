@@ -23,7 +23,7 @@ const HouseStack = StackNavigator({
             title: 'House Details',
         },
     },
-    CharacterDetails: {
+    HouseCharacter: {
         screen: CharacterDetailsScreen,
         navigationOptions: {
             title: 'Character Details',
@@ -45,6 +45,12 @@ const BookStack = StackNavigator({
             title: 'Book Details',
         },
     },
+    BookCharacter: {
+        screen: CharacterDetailsScreen,
+        navigationOptions: {
+            title: 'Character Details',
+        },
+    }
 });
 
 const BaseNavigator = TabNavigator({

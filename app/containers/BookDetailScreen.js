@@ -20,6 +20,7 @@ class HouseDetails extends Component {
     return (
       <View style={styles.container}>
         <CharacterList
+          navScreen = 'BookCharacter'
           navigation={this.props.navigation}
           headline = {"Characters"}
         />

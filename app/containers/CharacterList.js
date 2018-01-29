@@ -21,7 +21,7 @@ class CharacterList extends React.Component {
     };
 
     itemOnPress = (item) => {
-        this.props.navigation.navigate('CharacterDetails', item);
+        this.props.navigation.navigate(this.props.navScreen, item);
         this.props.setCharacter(item);
     }
 

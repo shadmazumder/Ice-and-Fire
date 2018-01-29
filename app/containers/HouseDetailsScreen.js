@@ -33,6 +33,7 @@ class HouseDetails extends Component {
     if (this.props.house.swornMembers.length > 0) {
       return (
         <CharacterList
+          navScreen = 'HouseCharacter'
           navigation={this.props.navigation}
           headline = {'Sworn Members'}
         />
