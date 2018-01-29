@@ -11,7 +11,7 @@ import CharacterList from './CharacterList';
 
 class HouseDetails extends Component {
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     this.props.resetSwornMembers();
   }
 
