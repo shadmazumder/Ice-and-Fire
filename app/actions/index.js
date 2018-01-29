@@ -14,7 +14,10 @@ export const ACTION_TYPES = {
     CURRENT_LORD: "CURRENT_LORD",
     CURRENT_LORD_NULL_FOUND: "CURRENT_LORD_NULL_FOUND",
     CURRENT_LORD_EMPTY: "CURRENT_LORD_EMPTY",
-    SINGLE_BOOK: "SINGLE_BOOK"
+    SINGLE_BOOK: "SINGLE_BOOK",
+    SINGLE_BOOK_CHARACTER: "SINGLE_BOOK_CHARACTER",
+    SINGLE_BOOK_CHAR_LIST: "SINGLE_BOOK_CHAR_LIST",
+    SINGLE_BOOK_CHAR_LIST_EMPTY: "SINGLE_BOOK_CHAR_LIST_EMPTY"
 }
 
 export function getAllHouses() {
@@ -134,5 +137,38 @@ export function setBook(book) {
     return {
         type: ACTION_TYPES.SINGLE_BOOK,
         payload: book
+    }
+}
+
+export function setBookCharacter(characterObject) {
+    return {
+        type: ACTION_TYPES.SINGLE_BOOK_CHARACTER,
+        payload: characterObject
+    }
+}
+
+export function resetBookCharacters() {
+    return {
+        type: ACTION_TYPES.SINGLE_BOOK_CHAR_LIST_EMPTY
+    }
+}
+
+export function getBookCharacterList(charUrlList) {
+    return dispatch => {
+        let characterList = [];
+        charUrlList.map((characterUrl) => {
+            let connectionManger = new ConnectionManager();
+            connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
+                if (resp.data && resp.data != null) {
+                    characterList.push(resp.data);
+                    dispatch({
+                        type: ACTION_TYPES.SINGLE_BOOK_CHAR_LIST,
+                        payload: characterList
+                    })
+                }
+            }, error => {
+                // pass
+            })
+        })
     }
 }

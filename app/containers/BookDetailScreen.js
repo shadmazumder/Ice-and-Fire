@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import DetailComponent from '../components/DetailComponent';
-import { getCharacterList, resetSwornMembers } from '../actions';
+import { getBookCharacterList, resetBookCharacters } from '../actions';
 
-import CharacterList from './CharacterList';
+import CharacterList from './BookCharacterList';
 
 class HouseDetails extends Component {
 
   componentWillUnmount() {
-    this.props.resetSwornMembers();
+    this.props.resetBookCharacters();
   }
 
   render() {
@@ -37,8 +37,8 @@ function mapToStateProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    getCharacterList: getCharacterList,
-    resetSwornMembers: resetSwornMembers,
+    getCharacterList: getBookCharacterList,
+    resetBookCharacters: resetBookCharacters,
   }, dispatch);
 }
 
