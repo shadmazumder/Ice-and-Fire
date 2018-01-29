@@ -5,33 +5,28 @@ import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
-import BasicListItem from '../components/BasicListItem';
+import CharacterListItem from '../components/CharacterListItem';
 
-import { getAllBooks, setBook } from '../actions/index';
+import { setCharacter } from '../actions/index';
 
-class BookScreen extends React.Component {
+class CharacterList extends React.Component {
     state = {
-        headerTextAlign: 'center',
-        headerText: 'The Books',
+        headerTextAlign: 'left',
         headerTextDecoration: 'none',
         headerTextFontSize: 20
     };
 
     renderListItem = item => {
-        return <BasicListItem item={item} onPress={this.itemOnPress} />;
+        return <CharacterListItem item={item} onPress={this.itemOnPress} />;
     };
 
     itemOnPress = (item) => {
-        this.props.setBook(item)
-        this.props.navigation.navigate('BookDetails', item);
-    }
-
-    componentDidMount() {
-        this.props.getAllBooks();
+        this.props.navigation.navigate(this.props.navScreen, item);
+        this.props.setCharacter(item);
     }
 
     render() {
-        if (this.props.books.length == 0) {
+        if (this.props.characters.length == 0) {
             return (
                 <Spinner
                     visible={true}
@@ -50,8 +45,8 @@ class BookScreen extends React.Component {
                     { textDecorationLine: this.state.headerTextDecoration },
                     { fontSize: this.state.headerTextFontSize },
                 ]}
-                headerText={this.state.headerText}
-                items={this.props.books}
+                headerText={this.props.headline}
+                items={this.props.characters}
                 listItem={this.renderListItem}
             />
         );
@@ -60,14 +55,13 @@ class BookScreen extends React.Component {
 
 function mapToStateProps(state) {
     return {
-        books: state.books
+        characters: state.characters
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getAllBooks: getAllBooks,
-        setBook: setBook
+        setCharacter: setCharacter
     }, dispatch);
 }
 
@@ -83,4 +77,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapToStateProps, mapDispatchToProps)(BookScreen);
+export default connect(mapToStateProps, mapDispatchToProps)(CharacterList);

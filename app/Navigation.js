@@ -1,10 +1,13 @@
 import React from 'react';
 import { StackNavigator, TabNavigator } from 'react-navigation';
-import {Icon} from 'react-native-elements'
+import { Icon } from 'react-native-elements'
 
 import HouseScreen from './containers/HouseScreen';
 import BookScreen from './containers/BookScreen';
-import DetailsScreen from './components/DetailsScreen'
+import HouseDetailsScreen from './containers/HouseDetailsScreen';
+import CharacterDetailsScreen from './containers/CharacterDetailsScreen';
+import BookDetailsScreen from './containers/BookDetailScreen';
+import DetailsScreen from './components/DetailsScreen';
 
 const HouseStack = StackNavigator({
     House: {
@@ -15,11 +18,17 @@ const HouseStack = StackNavigator({
     },
 
     HouseDetails: {
-        screen: DetailsScreen,
-        navigationOptions:{
-            title: 'Details',
+        screen: HouseDetailsScreen,
+        navigationOptions: {
+            title: 'House Details',
         },
     },
+    HouseCharacter: {
+        screen: CharacterDetailsScreen,
+        navigationOptions: {
+            title: 'Character Details',
+        },
+    }
 });
 
 const BookStack = StackNavigator({
@@ -31,11 +40,17 @@ const BookStack = StackNavigator({
     },
 
     BookDetails: {
-        screen: DetailsScreen,
-        navigationOptions:{
-            title: 'Details',
+        screen: BookDetailsScreen,
+        navigationOptions: {
+            title: 'Book Details',
         },
     },
+    BookCharacter: {
+        screen: CharacterDetailsScreen,
+        navigationOptions: {
+            title: 'Character Details',
+        },
+    }
 });
 
 const BaseNavigator = TabNavigator({
