@@ -21,6 +21,7 @@ class HouseDetails extends Component {
       <View style={styles.container}>
         <CharacterList
           navigation={this.props.navigation}
+          headline = {"Characters"}
         />
       </View>
     );

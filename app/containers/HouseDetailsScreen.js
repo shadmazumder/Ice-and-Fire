@@ -34,6 +34,7 @@ class HouseDetails extends Component {
       return (
         <CharacterList
           navigation={this.props.navigation}
+          headline = {'Sworn Members'}
         />
       )
     }
