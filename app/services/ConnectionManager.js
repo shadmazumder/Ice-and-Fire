@@ -59,18 +59,17 @@ export default class ConnectionManager {
     return this.api
       .get('houses')
   }
-  //get single charcters details
+  //get single characters details
   getCharacterDetailsWith(characterUrl) {
-    this.api
-      .get(`${characterUrl}`)
-      .then(response => response.data)
-      .then(charcterDetails => {
-        console.log(charcterDetails);
-        return charcterDetails;
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    newApi = create({
+      baseURL: `${characterUrl}`,
+      headers: {
+        Accept: 'application/vnd.anapioficeandfire+json',
+        version: 1,
+      }
+    })
+    return newApi
+      .get();
   }
 
   //get single book details

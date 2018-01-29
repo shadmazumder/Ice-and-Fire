@@ -6,7 +6,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
 import AvatarListItem from '../components/AvatarListItem';
-import { getAllHouses } from '../actions/index';
+import { getAllHouses, setHouse } from '../actions/index';
 
 class HouseScreen extends React.Component {
     state = {
@@ -17,8 +17,13 @@ class HouseScreen extends React.Component {
     };
 
     renderListItem = item => {
-        return <AvatarListItem item={item} />;
+        return <AvatarListItem item={item} onPress={this.itemOnPress} />;
     };
+
+    itemOnPress = (item) => {
+        this.props.setHouse(item);
+        this.props.navigation.navigate('HouseDetails', item);
+    }
 
     componentDidMount() {
         this.props.getAllHouses();
@@ -59,7 +64,8 @@ function mapToStateProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getAllHouses: getAllHouses
+        getAllHouses: getAllHouses,
+        setHouse: setHouse
     }, dispatch);
 }
 
@@ -74,6 +80,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-
 
 export default connect(mapToStateProps, mapDispatchToProps)(HouseScreen);
