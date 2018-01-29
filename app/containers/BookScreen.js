@@ -7,7 +7,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import ContainerList from "../components/ListComponent";
 import BasicListItem from '../components/BasicListItem';
 
-import { getAllBooks } from '../actions/index';
+import { getAllBooks, setBook } from '../actions/index';
 
 class BookScreen extends React.Component {
     state = {
@@ -22,9 +22,7 @@ class BookScreen extends React.Component {
     };
 
     itemOnPress = (item) => {
-        console.log('pinged me !!!')
-        console.log(item);
-
+        this.props.setBook(item)
         this.props.navigation.navigate('BookDetails', item);
     }
 
@@ -68,7 +66,8 @@ function mapToStateProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        getAllBooks: getAllBooks
+        getAllBooks: getAllBooks,
+        setBook: setBook
     }, dispatch);
 }
 
