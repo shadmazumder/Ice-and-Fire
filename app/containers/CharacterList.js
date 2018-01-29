@@ -12,7 +12,6 @@ import { setCharacter } from '../actions/index';
 class CharacterList extends React.Component {
     state = {
         headerTextAlign: 'left',
-        headerText: 'Sworn Members',
         headerTextDecoration: 'none',
         headerTextFontSize: 20
     };
@@ -22,7 +21,7 @@ class CharacterList extends React.Component {
     };
 
     itemOnPress = (item) => {
-        this.props.navigation.navigate('CharacterDetails', item);
+        this.props.navigation.navigate(this.props.navScreen, item);
         this.props.setCharacter(item);
     }
 
@@ -46,7 +45,7 @@ class CharacterList extends React.Component {
                     { textDecorationLine: this.state.headerTextDecoration },
                     { fontSize: this.state.headerTextFontSize },
                 ]}
-                headerText={this.state.headerText}
+                headerText={this.props.headline}
                 items={this.props.characters}
                 listItem={this.renderListItem}
             />
