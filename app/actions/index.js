@@ -14,6 +14,7 @@ export const ACTION_TYPES = {
     CURRENT_LORD: "CURRENT_LORD",
     CURRENT_LORD_NULL_FOUND: "CURRENT_LORD_NULL_FOUND",
     CURRENT_LORD_EMPTY: "CURRENT_LORD_EMPTY",
+    SINGLE_BOOK: "SINGLE_BOOK"
 }
 
 export function getAllHouses() {
@@ -106,5 +107,12 @@ export function resetCurrentLord() {
 export function resetSwornMembers() {
     return {
         type: ACTION_TYPES.CHARACTER_LIST_EMPTY
+    }
+}
+
+export function setBook(book) {
+    return {
+        type: ACTION_TYPES.SINGLE_BOOK,
+        payload: book
     }
 }
