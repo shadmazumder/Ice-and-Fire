@@ -1,5 +1,5 @@
 import ConnectionManager from '../services/ConnectionManager';
-
+import JsonStaticData from '../services/StaticJsonDataManager';
 export const ACTION_TYPES = {
     CHAR_LOADING_INITIALED: "CHAR_LOADING_INITIALED",
     CHAR_LOADING_COMPLETE: "CHAR_LOADING_COMPLETE",
@@ -22,13 +22,23 @@ export function getAllHouses() {
         dispatch({
             type: ACTION_TYPES.HOUSE_LOADING_INITIATED,
         });
-        let connectionManger = new ConnectionManager();
-        connectionManger.getAllHouses().then(resp => {
+        try {
+            // throw "error"
+            let connectionManger = new ConnectionManager();
+            connectionManger.getAllHouses().then(resp => {
+                dispatch({
+                    type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
+                    payload: resp.data
+                })
+            }) 
+        } catch (error) {
+            let staticData = new  JsonStaticData();
             dispatch({
                 type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
-                payload: resp.data
+                payload: staticData.getHouses()
             })
-        })
+        }
+        
     };
 }
 
@@ -37,13 +47,23 @@ export function getAllBooks() {
         dispatch({
             type: ACTION_TYPES.BOOK_LOADING_INITIATED,
         });
-        let connectionManger = new ConnectionManager();
-        connectionManger.getAllBooks().then(resp => {
+
+        try {
+            let connectionManger = new ConnectionManager();
+            connectionManger.getAllBooks().then(resp => {
             dispatch({
                 type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
                 payload: resp.data
             })
         })
+        } catch (error) {
+            let staticData = new  JsonStaticData();
+            dispatch({
+                type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
+                payload: staticData.books
+            })
+        }
+        
     };
 }
 
