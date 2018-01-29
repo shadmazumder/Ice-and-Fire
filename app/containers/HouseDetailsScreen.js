@@ -24,6 +24,16 @@ class HouseDetails extends Component {
     return houseInfo
   }
 
+  showCharList() {
+    if (this.props.house.swornMembers.length > 0) {
+      return (
+        <CharacterList
+          navigation={this.props.navigation}
+        />
+      )
+    }
+  }
+
   processHouseInfo() {
     let charUrlList = this.props.house.swornMembers;
     let houseInfo = this.props.house;
@@ -41,9 +51,7 @@ class HouseDetails extends Component {
           title={this.props.house.name}
           values={houseInfo}
         />
-        <CharacterList
-          navigation={this.props.navigation}
-        />
+        {this.showCharList()}
       </View>
     );
   }
