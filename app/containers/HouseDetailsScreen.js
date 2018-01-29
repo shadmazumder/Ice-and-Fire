@@ -28,10 +28,7 @@ class HouseDetails extends Component {
     let charUrlList = this.props.house.swornMembers;
     let houseInfo = this.props.house;
     this.props.getCurrentLord(this.props.house.currentLord);
-
-    if (charUrlList.length > 0) {
-      this.props.getCharacterList(charUrlList);
-    }
+    this.props.getCharacterList(charUrlList);
     houseInfo = this._deleteUnnecessaryKeys(houseInfo)
     return houseInfo
   }

@@ -27,15 +27,15 @@ class CharacterList extends React.Component {
     }
 
     render() {
-        if (this.props.characters.length == 0) {
-            return (
-                <Spinner
-                    visible={true}
-                    textContent={"Loading..."}
-                    textStyle={{ color: '#FFF' }}
-                />
-            )
-        }
+        // if (this.props.characters.length == 0) {
+        //     return (
+        //         <Spinner
+        //             visible={true}
+        //             textContent={"Loading..."}
+        //             textStyle={{ color: '#FFF' }}
+        //         />
+        //     )
+        // }
 
         return (
             <ContainerList

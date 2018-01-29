@@ -53,17 +53,26 @@ export function setHouse(item) {
 
 export function getCharacterList(charUrlList) {
     return dispatch => {
+        if (charUrlList.length == 0) {
+            return dispatch({
+                type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
+                payload: []
+            })
+        }
         let characterList = [];
+
         charUrlList.map((characterUrl) => {
             let connectionManger = new ConnectionManager();
             connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
-                characterList.push(resp.data);
-                if (characterList.length == charUrlList.length) {
+                if (resp.data && resp.data != null) {
+                    characterList.push(resp.data);
                     dispatch({
                         type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
                         payload: characterList
                     })
                 }
+            }, error => {
+                // pass
             })
         })
     }
@@ -71,17 +80,24 @@ export function getCharacterList(charUrlList) {
 
 export function getCurrentLord(characterUrl) {
     return dispatch => {
+        dispatch({
+            type: ACTION_TYPES.CURRENT_LORD,
+            payload: ""
+        })
         if (characterUrl.length > 0) {
             let connectionManger = new ConnectionManager();
             connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
-                dispatch({
-                    type: ACTION_TYPES.CURRENT_LORD,
-                    payload: resp.data.name
-                })
+                if (resp.data && resp.data.name) {
+                    dispatch({
+                        type: ACTION_TYPES.CURRENT_LORD,
+                        payload: resp.data.name
+                    })
+                }
+
             }, error => {
                 console.log(error)
             })
-        }
+        } 
 
     }
 }
