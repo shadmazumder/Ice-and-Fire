@@ -6,10 +6,27 @@ import { camelToNormalCase, renderListIfNecessary } from '../services';
 
 export default class DetailComponent extends Component {
 
+    checkIfShouldRender(key, value) {
+        console.log(value)
+        if (key == 'url' || key == 'swornMembers') {
+            return false
+        }
+        if (value && Array.isArray(value) && value.length > 0) {
+            if (value.length > 1 || value[0].length > 0) {
+                return true
+            }
+            return false 
+        }
+        if (value) {
+            return true
+        }
+        return false
+    }
+
     renderItem() {
         let items = [];
         for (const [key, value] of Object.entries(this.props.values)) {
-            if (value && key != 'url' && key != 'swornMembers') {
+            if (this.checkIfShouldRender(key, value)) {
                 items.push(
                     <View key={key} >
                         <Text style={styles.detailsKeyLabel}>

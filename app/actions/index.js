@@ -9,8 +9,11 @@ export const ACTION_TYPES = {
     BOOK_LOADING_COMPLETED: "BOOK_LOADING_COMPLETED",
     SINGLE_HOUSE: "SINGLE_HOUSE",
     CHARACTER_LIST_FETCHED: "CHARACTER_LIST_FETCHED",
+    CHARACTER_LIST_EMPTY: "CHARACTER_LIST_EMPTY",
     SINGLE_CHARACTER: "SINGLE_CHARACTER",
-    CURRENT_LORD: "CURRENT_LORD"
+    CURRENT_LORD: "CURRENT_LORD",
+    CURRENT_LORD_NULL_FOUND: "CURRENT_LORD_NULL_FOUND",
+    CURRENT_LORD_EMPTY: "CURRENT_LORD_EMPTY",
 }
 
 export function getAllHouses() {
@@ -53,14 +56,7 @@ export function setHouse(item) {
 
 export function getCharacterList(charUrlList) {
     return dispatch => {
-        if (charUrlList.length == 0) {
-            return dispatch({
-                type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
-                payload: []
-            })
-        }
         let characterList = [];
-
         charUrlList.map((characterUrl) => {
             let connectionManger = new ConnectionManager();
             connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
@@ -80,11 +76,7 @@ export function getCharacterList(charUrlList) {
 
 export function getCurrentLord(characterUrl) {
     return dispatch => {
-        dispatch({
-            type: ACTION_TYPES.CURRENT_LORD,
-            payload: ""
-        })
-        if (characterUrl.length > 0) {
+        if (characterUrl && characterUrl.length > 0) {
             let connectionManger = new ConnectionManager();
             connectionManger.getCharacterDetailsWith(characterUrl).then(resp => {
                 if (resp.data && resp.data.name) {
@@ -93,12 +85,8 @@ export function getCurrentLord(characterUrl) {
                         payload: resp.data.name
                     })
                 }
-
-            }, error => {
-                console.log(error)
             })
-        } 
-
+        }
     }
 }
 
@@ -106,5 +94,17 @@ export function setCharacter(characterObject) {
     return {
         type: ACTION_TYPES.SINGLE_CHARACTER,
         payload: characterObject
+    }
+}
+
+export function resetCurrentLord() {
+    return {
+        type: ACTION_TYPES.CURRENT_LORD_EMPTY
+    }
+}
+
+export function resetSwornMembers() {
+    return {
+        type: ACTION_TYPES.CHARACTER_LIST_EMPTY
     }
 }

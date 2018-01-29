@@ -5,11 +5,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import DetailComponent from '../components/DetailComponent';
-import { getCharacterList, getCurrentLord } from '../actions';
+import { getCharacterList, getCurrentLord, resetCurrentLord, resetSwornMembers } from '../actions';
 
 import CharacterList from './CharacterList';
 
 class HouseDetails extends Component {
+
+  componentWillUnmount() {
+    this.props.resetCurrentLord();
+    this.props.resetSwornMembers();
+  }
 
   _deleteUnnecessaryKeys(houseInfo) {
     // Removing unnecessary keys from dict
@@ -44,7 +49,7 @@ class HouseDetails extends Component {
   }
   render() {
     let houseInfo = this.processHouseInfo();
-    houseInfo.currentLord = this.props.current_lord; // Set current Lord from redux
+    houseInfo.currentLord = this.props.current_lord;
     return (
       <View style={styles.container}>
         <DetailComponent
@@ -68,6 +73,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     getCharacterList: getCharacterList,
     getCurrentLord: getCurrentLord,
+    resetCurrentLord: resetCurrentLord,
+    resetSwornMembers: resetSwornMembers,
   }, dispatch);
 }
 
