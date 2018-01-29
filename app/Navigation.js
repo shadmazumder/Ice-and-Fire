@@ -6,6 +6,7 @@ import HouseScreen from './containers/HouseScreen';
 import BookScreen from './containers/BookScreen';
 import HouseDetailsScreen from './containers/HouseDetailsScreen';
 import CharacterDetailsScreen from './containers/CharacterDetailsScreen';
+import BookCharacterDetailsScreen from './containers/BookCharacterDetailsScreen';
 import BookDetailsScreen from './containers/BookDetailScreen';
 import DetailsScreen from './components/DetailsScreen';
 
@@ -46,7 +47,7 @@ const BookStack = StackNavigator({
         },
     },
     BookCharacter: {
-        screen: CharacterDetailsScreen,
+        screen: BookCharacterDetailsScreen,
         navigationOptions: {
             title: 'Character Details',
         },
