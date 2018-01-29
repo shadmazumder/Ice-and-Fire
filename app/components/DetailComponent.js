@@ -7,7 +7,6 @@ import { camelToNormalCase, renderListIfNecessary } from '../services';
 export default class DetailComponent extends Component {
 
     checkIfShouldRender(key, value) {
-        console.log(value)
         if (key == 'url' || key == 'swornMembers') {
             return false
         }
