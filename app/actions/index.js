@@ -30,19 +30,27 @@ export function getAllHouses () {
     try {
       // throw "error"
       let connectionManger = new ConnectionManager ();
-      connectionManger.getAllHouses ().then (resp => {
-        if (resp.status == 200) {
-          dispatch ({
-            type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
-            payload: resp.data,
-          });
-        } else {
+      connectionManger.getAllHouses ().then (
+        resp => {
+          if (resp.status == 200) {
+            dispatch ({
+              type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
+              payload: resp.data,
+            });
+          } else {
+            dispatch ({
+              type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
+              payload: jsonStatiData.getHouses (),
+            });
+          }
+        },
+        error => {
           dispatch ({
             type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
             payload: jsonStatiData.getHouses (),
           });
         }
-      });
+      );
     } catch (error) {
       dispatch ({
         type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
@@ -60,19 +68,27 @@ export function getAllBooks () {
 
     try {
       let connectionManger = new ConnectionManager ();
-      connectionManger.getAllBooks ().then (resp => {
-        if (resp.status == 200) {
-          dispatch ({
-            type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
-            payload: resp.data,
-          });
-        } else {
+      connectionManger.getAllBooks ().then (
+        resp => {
+          if (resp.status == 200) {
+            dispatch ({
+              type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
+              payload: resp.data,
+            });
+          } else {
+            dispatch ({
+              type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
+              payload: jsonStatiData.getBooks (),
+            });
+          }
+        },
+        error => {
           dispatch ({
             type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
             payload: jsonStatiData.getBooks (),
           });
         }
-      });
+      );
     } catch (error) {
       let staticData = new JsonStaticData ();
       dispatch ({
