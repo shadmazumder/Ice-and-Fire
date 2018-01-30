@@ -20,6 +20,10 @@ class HouseScreen extends React.Component {
         return <AvatarListItem item={item} onPress={this.itemOnPress} />;
     };
 
+    listItemKeyExtractor = item => {
+        return item.url
+    }
+
     itemOnPress = (item) => {
         this.props.setHouse(item);
         this.props.navigation.navigate('HouseDetails', item);
@@ -51,6 +55,7 @@ class HouseScreen extends React.Component {
                 headerText={this.state.headerText}
                 items={this.props.houses}
                 listItem={this.renderListItem}
+                keyExtractor={this.listItemKeyExtractor}
             />
         );
     }

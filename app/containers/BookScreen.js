@@ -21,6 +21,10 @@ class BookScreen extends React.Component {
         return <BasicListItem item={item} onPress={this.itemOnPress} />;
     };
 
+    listItemKeyExtractor = item => {
+        return item.url
+    }
+
     itemOnPress = (item) => {
         this.props.setBook(item)
         this.props.navigation.navigate('BookDetails', item);
@@ -53,6 +57,7 @@ class BookScreen extends React.Component {
                 headerText={this.state.headerText}
                 items={this.props.books}
                 listItem={this.renderListItem}
+                keyExtractor={this.listItemKeyExtractor}
             />
         );
     }

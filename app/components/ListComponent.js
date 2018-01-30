@@ -35,7 +35,7 @@ export default class ContainerList extends Component {
           <FlatList
             data={this.props.items}
             renderItem={({item}) => this.props.listItem (item)}
-            keyExtractor={item => item.url}
+            keyExtractor={(item) => this.props.keyExtractor(item)}
             ItemSeparatorComponent={this.getItemSeparator}
           />
         </List>

@@ -17,6 +17,10 @@ export default class DetailComponent extends Component {
         return <DetailListItem item={item} />;
     };
 
+    listItemKeyExtractor = item => {
+        return item.key
+    }
+
     converToItems(){
         let items = [];
         for (const [key, value] of Object.entries(this.props.values)) {
@@ -62,6 +66,7 @@ export default class DetailComponent extends Component {
                 headerText={this.props.values.name}
                 items={this.converToItems()}
                 listItem={this.renderListItem}
+                keyExtractor={this.listItemKeyExtractor}
             />
         )
     }

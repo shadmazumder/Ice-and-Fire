@@ -20,6 +20,10 @@ class CharacterList extends React.Component {
         return <CharacterListItem item={item} onPress={this.itemOnPress} />;
     };
 
+    listItemKeyExtractor = item => {
+        return item.url
+    }
+
     itemOnPress = (item) => {
         this.props.navigation.navigate(this.props.navScreen, item);
         this.props.setCharacter(item);
@@ -48,6 +52,7 @@ class CharacterList extends React.Component {
                 headerText={this.props.headline}
                 items={this.props.characters}
                 listItem={this.renderListItem}
+                keyExtractor={this.listItemKeyExtractor}
             />
         );
     }
