@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Alert, NetInfo } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
@@ -21,8 +21,22 @@ class HouseScreen extends React.Component {
     };
 
     itemOnPress = (item) => {
-        this.props.setHouse(item);
-        this.props.navigation.navigate('HouseDetails', item);
+
+        if (NetInfo.isConnected) {
+            this.props.setHouse(item);
+            this.props.navigation.navigate('HouseDetails', item);
+
+        } else {
+            Alert.alert(
+                'No Internet!!!',
+                'Please turn on internet connection..',
+                [
+                    { text: 'Ok', onPress: () => console.log('Ask me later pressed') },
+                ],
+                { cancelable: false }
+            )
+        }
+
     }
 
     componentDidMount() {
