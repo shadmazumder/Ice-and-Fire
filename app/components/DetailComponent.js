@@ -61,6 +61,7 @@ export default class DetailComponent extends Component {
                 items={this.getItems()}
                 listItem={this.renderListItem}
                 keyExtractor={this.listItemKeyExtractor}
+                hideSeparator={true}
             />
         )
     }

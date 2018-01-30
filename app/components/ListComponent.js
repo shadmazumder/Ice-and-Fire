@@ -36,7 +36,8 @@ export default class ContainerList extends Component {
             data={this.props.items}
             renderItem={({item}) => this.props.listItem (item)}
             keyExtractor={(item) => this.props.keyExtractor(item)}
-            ItemSeparatorComponent={this.getItemSeparator}
+            ItemSeparatorComponent={ this.props.hideSeparator ? 
+                                      null : this.getItemSeparator}
           />
         </List>
       </View>
