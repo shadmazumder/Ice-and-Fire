@@ -117,7 +117,7 @@ export function getCharacterList (charUrlList) {
             characterList.push (resp.data);
             dispatch ({
               type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
-              payload: characterList,
+              payload: [],
             });
           }
         },

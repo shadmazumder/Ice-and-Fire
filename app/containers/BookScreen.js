@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Alert} from 'react-native';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -8,6 +8,7 @@ import ContainerList from '../components/ListComponent';
 import BasicListItem from '../components/BasicListItem';
 
 import {getAllBooks, setBook} from '../actions/index';
+import ConnectionManager from '../services/ConnectionManager';
 
 class BookScreen extends React.Component {
   state = {
@@ -22,8 +23,20 @@ class BookScreen extends React.Component {
   };
 
   itemOnPress = item => {
-    this.props.setBook (item);
-    this.props.navigation.navigate ('BookDetails', item);
+    if (ConnectionManager.isInternetConnected) {
+      this.props.setBook (item);
+      this.props.navigation.navigate ('BookDetails', item);
+
+      console.log ('has internet');
+    } else {
+      Alert.alert (
+        'No Internet',
+        'Please check your internet connection',
+        [{text: 'OK', onPress: () => console.log ('OK Pressed')}],
+        {cancelable: false}
+      );
+      console.log ('no internet');
+    }
   };
 
   componentDidMount () {
