@@ -44,10 +44,9 @@ export function getAllHouses () {
         }
       });
     } catch (error) {
-      let staticData = new JsonStaticData ();
       dispatch ({
         type: ACTION_TYPES.HOUSE_LOADING_COMPLETE,
-        payload: staticData.getHouses (),
+        payload: jsonStatiData.getHouses (),
       });
     }
   };
@@ -62,10 +61,17 @@ export function getAllBooks () {
     try {
       let connectionManger = new ConnectionManager ();
       connectionManger.getAllBooks ().then (resp => {
-        dispatch ({
-          type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
-          payload: resp.data,
-        });
+        if (resp.status == 200) {
+          dispatch ({
+            type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
+            payload: resp.data,
+          });
+        } else {
+          dispatch ({
+            type: ACTION_TYPES.BOOK_LOADING_COMPLETED,
+            payload: jsonStatiData.getBooks (),
+          });
+        }
       });
     } catch (error) {
       let staticData = new JsonStaticData ();
