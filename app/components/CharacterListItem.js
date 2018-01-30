@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
-import { ListItem } from 'react-native-elements';
+import React, {Component} from 'react';
+import {ListItem} from 'react-native-elements';
 
 export default class CharacterListItem extends Component {
-  getTitle(titles) {
-    if (titles.length > 0) {
-      return titles[0]
+  getTitle (titles) {
+    if (titles && titles.length > 0) {
+      return titles[0];
     }
-    return ""
+    return '';
   }
-  render() {
+  render () {
     return (
       <ListItem
-        containerStyle={{ borderBottomWidth: 0 }}
+        containerStyle={{borderBottomWidth: 0}}
         title={this.props.item.name}
-        subtitle={`AKA: ${this.getTitle(this.props.item.titles)}`}
-        onPress={() => { this.props.onPress(this.props.item) }}
+        subtitle={`AKA: ${this.getTitle (this.props.item.titles)}`}
+        onPress={() => {
+          this.props.onPress (this.props.item);
+        }}
       />
     );
   }
