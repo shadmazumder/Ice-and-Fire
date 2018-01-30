@@ -12,7 +12,12 @@ import { getAllBooks, setBook } from '../actions/index';
 class BookScreen extends React.Component {
 
     renderListItem = item => {
-        return <BasicListItem item={item} onPress={this.itemOnPress} />;
+        return <BasicListItem 
+                            item={item} 
+                            title = {item.name}
+                            subTitle = {`${item.publisher}, ${item.country}`}
+                            onPress={this.itemOnPress} 
+                />;
     };
 
     listItemKeyExtractor = item => {

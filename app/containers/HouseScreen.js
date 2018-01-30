@@ -5,13 +5,18 @@ import { StyleSheet } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
-import AvatarListItem from '../components/AvatarListItem';
+import BasicListItem from '../components/BasicListItem';
 import { getAllHouses, setHouse } from '../actions/index';
 
 class HouseScreen extends React.Component {
 
     renderListItem = item => {
-        return <AvatarListItem item={item} onPress={this.itemOnPress} />;
+        return <BasicListItem 
+                            item={item} 
+                            onPress={this.itemOnPress} 
+                            title = {item.name}
+                            subTitle = {item.region}
+                />;
     };
 
     listItemKeyExtractor = item => {
