@@ -5,15 +5,27 @@ import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
-import CharacterListItem from '../components/CharacterListItem';
+import BasicListItem from '../components/BasicListItem';
 
 import { setBookCharacter } from '../actions/index';
 
 class BookCharacterList extends React.Component {
 
     renderListItem = item => {
-        return <CharacterListItem item={item} onPress={this.itemOnPress} />;
+        return <BasicListItem 
+                            item={item} 
+                            title = {item.name}
+                            subTitle = {`AKA: ${this.getTitle(item.titles)}`}
+                            onPress={this.itemOnPress} 
+                />;
     };
+
+    getTitle(titles) {
+        if (titles.length > 0) {
+          return titles[0]
+        }
+        return ""
+      }
 
     listItemKeyExtractor = item => {
         return item.url
