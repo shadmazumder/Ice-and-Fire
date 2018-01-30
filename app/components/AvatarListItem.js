@@ -8,7 +8,7 @@ export default class AvatarListItem extends Component {
         // roundAvatar
         containerStyle={{ borderBottomWidth: 0 }}
         title={this.props.item.name}
-        subtitle={`${this.props.item.region}`}
+        subtitle={this.props.item.region}
         onPress={() => { this.props.onPress(this.props.item) }}
       />
     );

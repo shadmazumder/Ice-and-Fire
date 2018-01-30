@@ -27,7 +27,7 @@ export default class DetailComponent extends Component {
         for (const [key, value] of Object.entries(this.props.values)) {
             if (this.checkIfShouldRender(key, value)) {
                 items.push(
-                    <View key={key} >
+                    <View key={key}>
                         <Text style={styles.detailsKeyLabel}>
                             {camelToNormalCase(key)}
                         </Text>
@@ -44,7 +44,7 @@ export default class DetailComponent extends Component {
     render() {
         let items = this.renderItem();
         return (
-            <View>
+            <View >
                 <Text h4 style={styles.titleLabel}>
                     {this.props.title}
                 </Text>
