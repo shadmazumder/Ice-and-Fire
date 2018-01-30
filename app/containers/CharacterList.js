@@ -10,11 +10,6 @@ import CharacterListItem from '../components/CharacterListItem';
 import { setCharacter } from '../actions/index';
 
 class CharacterList extends React.Component {
-    state = {
-        headerTextAlign: 'left',
-        headerTextDecoration: 'none',
-        headerTextFontSize: 20
-    };
 
     renderListItem = item => {
         return <CharacterListItem item={item} onPress={this.itemOnPress} />;
@@ -45,9 +40,9 @@ class CharacterList extends React.Component {
                 containerStyle={styles.container}
                 headerStyle={[
                     styles.header,
-                    { textAlign: this.state.headerTextAlign },
-                    { textDecorationLine: this.state.headerTextDecoration },
-                    { fontSize: this.state.headerTextFontSize },
+                    { textAlign: 'left' },
+                    { textDecorationLine: 'none' },
+                    { fontSize: 20 },
                 ]}
                 headerText={this.props.headline}
                 items={this.props.characters}

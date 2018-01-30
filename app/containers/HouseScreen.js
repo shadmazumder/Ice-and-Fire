@@ -9,12 +9,6 @@ import AvatarListItem from '../components/AvatarListItem';
 import { getAllHouses, setHouse } from '../actions/index';
 
 class HouseScreen extends React.Component {
-    state = {
-        headerTextAlign: 'center',
-        headerText: 'The Houses',
-        headerTextDecoration: 'none',
-        headerTextFontSize: 20
-    };
 
     renderListItem = item => {
         return <AvatarListItem item={item} onPress={this.itemOnPress} />;
@@ -48,11 +42,11 @@ class HouseScreen extends React.Component {
                 containerStyle={styles.container}
                 headerStyle={[
                     styles.header,
-                    { textAlign: this.state.headerTextAlign },
-                    { textDecorationLine: this.state.headerTextDecoration },
-                    { fontSize: this.state.headerTextFontSize },
+                    { textAlign: 'center' },
+                    { textDecorationLine: 'none' },
+                    { fontSize: 20 },
                 ]}
-                headerText={this.state.headerText}
+                headerText={'The Houses'}
                 items={this.props.houses}
                 listItem={this.renderListItem}
                 keyExtractor={this.listItemKeyExtractor}

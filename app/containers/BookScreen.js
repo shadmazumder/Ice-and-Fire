@@ -10,12 +10,6 @@ import BasicListItem from '../components/BasicListItem';
 import { getAllBooks, setBook } from '../actions/index';
 
 class BookScreen extends React.Component {
-    state = {
-        headerTextAlign: 'center',
-        headerText: 'The Books',
-        headerTextDecoration: 'none',
-        headerTextFontSize: 20
-    };
 
     renderListItem = item => {
         return <BasicListItem item={item} onPress={this.itemOnPress} />;
@@ -50,11 +44,11 @@ class BookScreen extends React.Component {
                 containerStyle={styles.container}
                 headerStyle={[
                     styles.header,
-                    { textAlign: this.state.headerTextAlign },
-                    { textDecorationLine: this.state.headerTextDecoration },
-                    { fontSize: this.state.headerTextFontSize },
+                    { textAlign: 'center' },
+                    { textDecorationLine: 'none' },
+                    { fontSize: 20 },
                 ]}
-                headerText={this.state.headerText}
+                headerText={'The Books'}
                 items={this.props.books}
                 listItem={this.renderListItem}
                 keyExtractor={this.listItemKeyExtractor}

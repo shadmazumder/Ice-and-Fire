@@ -7,12 +7,6 @@ import ContainerList from "../components/ListComponent";
 
 export default class DetailComponent extends Component {
 
-    state = {
-        headerTextAlign: 'left',
-        headerTextDecoration: 'none',
-        headerTextFontSize: 20
-    };
-
     renderListItem = item => {
         return <DetailListItem item={item} />;
     };
@@ -21,7 +15,7 @@ export default class DetailComponent extends Component {
         return item.key
     }
 
-    converToItems(){
+    getItems(){
         let items = [];
         for (const [key, value] of Object.entries(this.props.values)) {
 
@@ -59,12 +53,12 @@ export default class DetailComponent extends Component {
                 containerStyle={styles.container}
                 headerStyle={[
                     styles.header,
-                    { textAlign: this.state.headerTextAlign },
-                    { textDecorationLine: this.state.headerTextDecoration },
-                    { fontSize: this.state.headerTextFontSize },
+                    { textAlign: 'left' },
+                    { textDecorationLine: 'none' },
+                    { fontSize: 20 },
                 ]}
                 headerText={this.props.values.name}
-                items={this.converToItems()}
+                items={this.getItems()}
                 listItem={this.renderListItem}
                 keyExtractor={this.listItemKeyExtractor}
             />
