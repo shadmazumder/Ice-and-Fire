@@ -45,13 +45,6 @@ class HouseScreen extends React.Component {
         return (
             <ContainerList
                 containerStyle={styles.container}
-                headerStyle={[
-                    styles.header,
-                    { textAlign: 'center' },
-                    { textDecorationLine: 'none' },
-                    { fontSize: 20 },
-                ]}
-                headerText={'The Houses'}
                 items={this.props.houses}
                 listItem={this.renderListItem}
                 keyExtractor={this.listItemKeyExtractor}
@@ -76,13 +69,7 @@ function mapDispatchToProps(dispatch) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
-    },
-    header: {
-        flex: 0,
-        marginTop: 8,
-        fontWeight: 'bold',
-    },
+    }
 });
 
 export default connect(mapToStateProps, mapDispatchToProps)(HouseScreen);
