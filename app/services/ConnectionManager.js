@@ -29,11 +29,11 @@ export default class ConnectionManager {
     console.log (ConnectionManager.isInternetConnected);
     NetInfo.isConnected.addEventListener (
       'connectionChange',
-      this.handleFirstConnectivityChange
+      this.handleConnectivityChange
     );
   }
 
-  handleFirstConnectivityChange (isConnected) {
+  handleConnectivityChange (isConnected) {
     ConnectionManager.isInternetConnected = isConnected;
     console.log ('Then, is ' + (isConnected ? 'online' : 'offline'));
     // NetInfo.isConnected.removeEventListener (

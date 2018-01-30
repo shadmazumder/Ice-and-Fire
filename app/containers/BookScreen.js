@@ -32,7 +32,7 @@ class BookScreen extends React.Component {
       Alert.alert (
         'No Internet',
         'Please check your internet connection',
-        [{text: 'OK', onPress: () => console.log ('OK Pressed')}],
+        [{text: 'OK', onPress: () => {}}],
         {cancelable: false}
       );
       console.log ('no internet');
