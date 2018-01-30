@@ -7,10 +7,9 @@ export default class DetailListItem extends Component {
   render() {
     return (
       <ListItem
-        containerStyle={{ borderBottomWidth: 0 }}
+        containerStyle={{ borderBottomWidth: 0 , margin: 8, backgroundColor: 'white'}}
         hideChevron={true}
         title={this.props.item.key}
-        // subtitle={this.props.item.value}
         subtitle={
           <View style={styles.subtitleView}>
             <Text style={styles.ratingText}>

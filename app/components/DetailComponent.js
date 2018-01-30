@@ -61,7 +61,6 @@ export default class DetailComponent extends Component {
                 items={this.getItems()}
                 listItem={this.renderListItem}
                 keyExtractor={this.listItemKeyExtractor}
-                hideSeparator={true}
             />
         )
     }
@@ -71,11 +70,9 @@ export default class DetailComponent extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
     },
     header: {
         flex: 0,
-        marginTop: 8,
         fontWeight: 'bold',
     }
 });
