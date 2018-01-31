@@ -1,21 +1,11 @@
 import React, {Component} from 'react';
-import {NetInfo} from 'react-native';
 import {create} from 'apisauce';
 export default class ConnectionManager {
 
-  static isInternetConnected = false;
-  constructor () {
-    console.log (ConnectionManager.isInternetConnected);
-    NetInfo.isConnected.addEventListener (
-      'connectionChange',
-      this.handleConnectivityChange
-    );
-  }
-
-  handleConnectivityChange (isConnected) {
-    ConnectionManager.isInternetConnected = isConnected;
-    console.log ('Then, is ' + (isConnected ? 'online' : 'offline'));
-  }
+  // Setting this flag to false will set the data to be loaded from Json.
+  // Currently static data from json is supported for the following screens:
+  // "House screen", "House Details" and "Book screen"
+  static isInternetConnected = true;
 
   api = create ({
     baseURL: 'https://www.anapioficeandfire.com/api/',
