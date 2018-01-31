@@ -15,13 +15,13 @@ class HouseDetails extends Component {
   }
 
   render() {
-      this.props.getCharacterList(this.props.book.characters)
+    this.props.getCharacterList(this.props.book.characters)
     return (
       <View style={styles.container}>
         <CharacterList
-          navScreen = 'BookCharacter'
+          navScreen='BookCharacter'
           navigation={this.props.navigation}
-          headline = {"Characters"}
+          headline={"Characters"}
         />
       </View>
     );
