@@ -28,6 +28,7 @@ This is a simple react-native app which is show the all books list and house lis
 3. run this command: `yarn test` to run tests for the application.
 
 # Demo
+<img src="https://github.com/shadmazumder/Ice-and-Fire/raw/Issue-48-doc-updation/demo/Ice%20And%20Fire.gif">
 
 
 # API Credit
