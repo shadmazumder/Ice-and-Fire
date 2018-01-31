@@ -37,11 +37,11 @@ class BookCharacterList extends React.Component {
     }
 
     render() {
-        if (this.props.characters.length == 0) {
+        if (this.props.characters && this.props.characters.length == 0) {
             return (
                 <Spinner
                     visible={true}
-                    textContent={"Loading..."}
+                    textContent={"Loading ..."}
                     textStyle={{ color: '#FFF' }}
                 />
             )
