@@ -74,5 +74,11 @@ const styles = StyleSheet.create({
     header: {
         flex: 0,
         fontWeight: 'bold',
+        backgroundColor: 'white',
+        marginTop: 0,
+        marginBottom: 0,
+        marginLeft: 8,
+        marginRight: 8, 
+        padding: 8,
     }
 });
