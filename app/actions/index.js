@@ -122,14 +122,14 @@ export function getCharacterList (charUrlList) {
           } else {
             dispatch ({
               type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
-              payload: [],
+              payload: null,
             });
           }
         },
         error => {
           dispatch ({
             type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
-            payload: [],
+            payload: null,
           });
         }
       );
