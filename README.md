@@ -27,6 +27,10 @@ This is a simple react-native app which is show the all books list and house lis
 2. run this command: `react-native run-ios` for running this application on IPhone emulator.
 3. run this command: `yarn test` to run tests for the application.
 
+# Additional Features
+ - Application is usable in offline state(Uses data from json)
+ - Has few tests written
+
 # Demo
 <img src="https://github.com/shadmazumder/Ice-and-Fire/raw/Issue-48-doc-updation/demo/Ice%20And%20Fire.gif">
 
