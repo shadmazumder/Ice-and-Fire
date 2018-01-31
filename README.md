@@ -30,5 +30,8 @@ This is a simple react-native app which is show the all books list and house lis
 # Demo
 
 
+# API Credit
+We used API from [Joakim Skoog](https://anapioficeandfire.com)
+
 # License 
 MIT License
