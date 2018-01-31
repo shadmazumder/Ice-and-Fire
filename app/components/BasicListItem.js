@@ -5,9 +5,14 @@ export default class BasicListItem extends Component {
   render() {
     return (
       <ListItem
-        containerStyle={{ borderBottomWidth: 0 }}
-        title={this.props.item.name}
-        subtitle={`${this.props.item.publisher}, ${this.props.item.country}`}
+        containerStyle={{ borderBottomWidth: 0 , 
+                          marginTop: 0,
+                          marginBottom: 16,
+                          marginLeft: 8,
+                          marginRight: 8, 
+                          backgroundColor: 'white'}}
+        title={this.props.title}
+        subtitle={this.props.subTitle}
         onPress={() => { this.props.onPress(this.props.item) }}
       />
     );

@@ -8,13 +8,12 @@ import HouseDetailsScreen from './containers/HouseDetailsScreen';
 import CharacterDetailsScreen from './containers/CharacterDetailsScreen';
 import BookCharacterDetailsScreen from './containers/BookCharacterDetailsScreen';
 import BookDetailsScreen from './containers/BookDetailScreen';
-import DetailsScreen from './components/DetailsScreen';
 
 const HouseStack = StackNavigator({
     House: {
         screen: HouseScreen,
         navigationOptions: {
-            header: null,
+            title: 'The Houses',
         },
     },
 
@@ -36,7 +35,7 @@ const BookStack = StackNavigator({
     Book: {
         screen: BookScreen,
         navigationOptions: {
-            header: null,
+            title: 'The Books',
         },
     },
 

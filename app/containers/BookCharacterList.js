@@ -5,20 +5,31 @@ import { connect } from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
-import CharacterListItem from '../components/CharacterListItem';
+import BasicListItem from '../components/BasicListItem';
 
 import { setBookCharacter } from '../actions/index';
 
 class BookCharacterList extends React.Component {
-    state = {
-        headerTextAlign: 'left',
-        headerTextDecoration: 'none',
-        headerTextFontSize: 20
-    };
 
     renderListItem = item => {
-        return <CharacterListItem item={item} onPress={this.itemOnPress} />;
+        return <BasicListItem 
+                            item={item} 
+                            title = {item.name}
+                            subTitle = {`AKA: ${this.getTitle(item.titles)}`}
+                            onPress={this.itemOnPress} 
+                />;
     };
+
+    getTitle(titles) {
+        if (titles.length > 0) {
+          return titles[0]
+        }
+        return ""
+      }
+
+    listItemKeyExtractor = item => {
+        return item.url
+    }
 
     itemOnPress = (item) => {
         this.props.navigation.navigate(this.props.navScreen, item);
@@ -41,13 +52,14 @@ class BookCharacterList extends React.Component {
                 containerStyle={styles.container}
                 headerStyle={[
                     styles.header,
-                    { textAlign: this.state.headerTextAlign },
-                    { textDecorationLine: this.state.headerTextDecoration },
-                    { fontSize: this.state.headerTextFontSize },
+                    { textAlign: 'left' },
+                    { textDecorationLine: 'none' },
+                    { fontSize: 20 },
                 ]}
                 headerText={this.props.headline}
                 items={this.props.characters}
                 listItem={this.renderListItem}
+                keyExtractor={this.listItemKeyExtractor}
             />
         );
     }
@@ -72,8 +84,13 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 0,
-        marginTop: 8,
         fontWeight: 'bold',
+        backgroundColor: 'white',
+        marginTop: 0,
+        marginBottom: 0,
+        marginLeft: 8,
+        marginRight: 8, 
+        padding: 8,
     }
 });
 
