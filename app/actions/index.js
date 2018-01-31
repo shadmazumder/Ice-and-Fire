@@ -113,8 +113,13 @@ export function getCharacterList (charUrlList) {
       let connectionManger = new ConnectionManager ();
       connectionManger.getCharacterDetailsWith (characterUrl).then (
         resp => {
-          if (resp.data && resp.data != null) {
+          if (resp.status == 200 && resp.data && resp.data != null) {
             characterList.push (resp.data);
+            dispatch ({
+              type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
+              payload: characterList,
+            });
+          } else {
             dispatch ({
               type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
               payload: [],
@@ -122,7 +127,10 @@ export function getCharacterList (charUrlList) {
           }
         },
         error => {
-          // pass
+          dispatch ({
+            type: ACTION_TYPES.CHARACTER_LIST_FETCHED,
+            payload: [],
+          });
         }
       );
     });
