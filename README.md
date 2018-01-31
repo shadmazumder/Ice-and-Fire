@@ -26,6 +26,10 @@ This is a simple react-native app which is show the all books list and house lis
 - Abu Saleh Musa: Splash Screen, Navigation, Offline Data(Reading Data from Json), Character List, Bug fixes, List View
 - Arnab Kumar Shil: Project Architecture, Redux, Character List, Details Component, Tests, Bug fixes, 3rd Party Library Integration(Spinner)
 
+** For details, please check the [issues section](https://github.com/shadmazumder/Ice-and-Fire/issues).
+** Project was maintained at [here](https://github.com/shadmazumder/Ice-and-Fire/projects/1)
+** Please visit the [wiki](https://github.com/shadmazumder/Ice-and-Fire/wiki) section for more details on this app.
+
 # How to run
 1. run this command: `npm run android-linux` for running this application on Android emulator.
 2. run this command: `react-native run-ios` for running this application on IPhone emulator.
