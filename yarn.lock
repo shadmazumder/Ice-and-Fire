@@ -2404,7 +2404,7 @@ jest-changed-files@^22.1.4:
   dependencies:
     throat "^4.0.0"
 
-jest-cli@^22.0.5:
+jest-cli@^22.1.4:
   version "22.1.4"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-22.1.4.tgz#0fe9f3ac881b0cdc00227114c58583a2ebefcc04"
   dependencies:
@@ -2642,11 +2642,11 @@ jest-worker@22.1.0, jest-worker@^22.1.0:
   dependencies:
     merge-stream "^1.0.1"
 
-jest@22.0.5:
-  version "22.0.5"
-  resolved "https://registry.yarnpkg.com/jest/-/jest-22.0.5.tgz#552b4104dea91d63fa4f4f39443337d061f63019"
+jest@^22.1.4:
+  version "22.1.4"
+  resolved "https://registry.yarnpkg.com/jest/-/jest-22.1.4.tgz#9ec71373a38f40ff92a3e5e96ae85687c181bb72"
   dependencies:
-    jest-cli "^22.0.5"
+    jest-cli "^22.1.4"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
