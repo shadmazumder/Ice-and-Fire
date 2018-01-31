@@ -2,27 +2,6 @@ import React, {Component} from 'react';
 import {NetInfo} from 'react-native';
 import {create} from 'apisauce';
 export default class ConnectionManager {
-  /* static myInstance = null;
-  static shareInstance () {
-    if (this.myInstance == null) {
-      this.myInstance = new ConnectionManager ();
-    }
-    return this.myInstance;
-
-    // this is not mounted component, so it shows error if we want to set state of unmounted component
-    state = {
-    allCharacters: [],
-    allHouses: [],
-    allBooks: [],
-    isLoading: false,
-  };
-
-  }*/
-
-  // constructor (props) {
-  //   // super (props);
-  //   console.log (this.props.name);
-  // }
 
   static isInternetConnected = false;
   constructor () {
@@ -36,10 +15,6 @@ export default class ConnectionManager {
   handleConnectivityChange (isConnected) {
     ConnectionManager.isInternetConnected = isConnected;
     console.log ('Then, is ' + (isConnected ? 'online' : 'offline'));
-    // NetInfo.isConnected.removeEventListener (
-    //   'connectionChange',
-    //   this.handleFirstConnectivityChange
-    // );
   }
 
   api = create ({
