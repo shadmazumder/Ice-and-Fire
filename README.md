@@ -1,18 +1,34 @@
 # Ice-and-Fire
+This is a simple react-native app which is show the all books list and house list of <b>Game of Thrones</b>. Anyone can check house details with basic information about the House and also the sworn members of that House. It also show the characters list with name and designaton of each chracter. In character details you can see the name, titles, gender and other information. We hope it will help you to get the information about <b>Game of Thrones</b> houses, books and also characters.
 
-This is a simple react-native app which is show the all books list and house list of <b> Ice and Fire</b>. Anyone can check house details with will show basic information and also the sworn members of that house. It also shows the characters name and designaton of each chracter. In character details you can see the name, titles, gender and other information. We hope it will help you to get the information about <b> Ice and Fire</b> houses, books and also characters.
+# Libraries Used
+ - apisauce
+ - react
+ - react-native
+ - react-native-elements
+ - react-native-loading-spinner-overlay
+ - react-native-vector-icons
+ - react-navigation
+ - react-redux
+ - redux
+ - redux-thunk
+ - jest 
 
-# Contributions:
-- Shaad Mazumdar:
-- Asaduzzaman Shuvro:
-- Abu Saleh Musa:
-- Arnab Kumar Shil:
+# Contributions
+- Shaad Mazumdar: @shadmazumder
+- Asaduzzaman Shuvro: @asaduzzaman-shuvro
+- Abu Saleh Musa: @puzzlemusa
+- Arnab Kumar Shil: @ruddra
 
-# Check the demo:
-Please check the following[Google Drive link:](https://drive.google.com/file/d/13CwZBDvJ4QRWeA5h6nL9exiSiMyFwxJg/view?usp=sharing)
+# Contribution
+
+# How to run
+run this command: `npm run android-linux` for running this application on Android emulator.
+run this command: `react-native run-ios` for running this application on IPhone emulator.
+run this command: `yarn test` to run tests for the application.
+
+# Demo
 
 
-# Credits:
-[Joakim Skoog ](https://anapioficeandfire.com)
-
-run on real device from linux: `npm run android-linux`
+# License 
+MIT License
