@@ -4,55 +4,52 @@ import {connect} from 'react-redux';
 import {StyleSheet} from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import ContainerList from '../components/ListComponent';
-import AvatarListItem from '../components/AvatarListItem';
-import {getAllHouses, setHouse} from '../actions/index';
+import ContainerList from "../components/ListComponent";
+import BasicListItem from '../components/BasicListItem';
+import { getAllHouses, setHouse } from '../actions/index';
 
 class HouseScreen extends React.Component {
-  state = {
-    headerTextAlign: 'center',
-    headerText: 'The Houses',
-    headerTextDecoration: 'none',
-    headerTextFontSize: 20,
-  };
 
-  renderListItem = item => {
-    return <AvatarListItem item={item} onPress={this.itemOnPress} />;
-  };
+    renderListItem = item => {
+        return <BasicListItem 
+                            item={item} 
+                            onPress={this.itemOnPress} 
+                            title = {item.name}
+                            subTitle = {item.region}
+                />;
+    };
 
-  itemOnPress = item => {
-    this.props.setHouse (item);
-    this.props.navigation.navigate ('HouseDetails', item);
-  };
+    listItemKeyExtractor = item => {
+        return item.url
+    }
+
+    itemOnPress = (item) => {
+        this.props.setHouse(item);
+        this.props.navigation.navigate('HouseDetails', item);
+    }
 
   componentDidMount () {
     this.props.getAllHouses ();
   }
 
-  render () {
-    if (this.props.houses && this.props.houses.length == 0) {
-      return (
-        <Spinner
-          visible={true}
-          textContent={'Loading...'}
-          textStyle={{color: '#FFF'}}
-        />
+    render() {
+        if (this.props.houses && this.props.houses.length == 0) {
+            return (
+                <Spinner
+                    visible={true}
+                    textContent={"Loading..."}
+                    textStyle={{ color: '#FFF' }}
+                />
+            )
+        }
+        return (
+          <ContainerList
+              containerStyle={styles.container}
+              items={this.props.houses}
+              listItem={this.renderListItem}
+              keyExtractor={this.listItemKeyExtractor}
+          />
       );
-    }
-    return (
-      <ContainerList
-        containerStyle={styles.container}
-        headerStyle={[
-          styles.header,
-          {textAlign: this.state.headerTextAlign},
-          {textDecorationLine: this.state.headerTextDecoration},
-          {fontSize: this.state.headerTextFontSize},
-        ]}
-        headerText={this.state.headerText}
-        items={this.props.houses}
-        listItem={this.renderListItem}
-      />
-    );
   }
 }
 
@@ -72,16 +69,10 @@ function mapDispatchToProps (dispatch) {
   );
 }
 
-const styles = StyleSheet.create ({
-  container: {
-    flex: 1,
-    marginTop: 20,
-  },
-  header: {
-    flex: 0,
-    marginTop: 8,
-    fontWeight: 'bold',
-  },
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    }
 });
 
 export default connect (mapToStateProps, mapDispatchToProps) (HouseScreen);

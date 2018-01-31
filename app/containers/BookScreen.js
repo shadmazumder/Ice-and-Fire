@@ -11,30 +11,34 @@ import {getAllBooks, setBook} from '../actions/index';
 import ConnectionManager from '../services/ConnectionManager';
 
 class BookScreen extends React.Component {
-  state = {
-    headerTextAlign: 'center',
-    headerText: 'The Books',
-    headerTextDecoration: 'none',
-    headerTextFontSize: 20,
-  };
 
-  renderListItem = item => {
-    return <BasicListItem item={item} onPress={this.itemOnPress} />;
-  };
+    renderListItem = item => {
+        return <BasicListItem 
+                            item={item} 
+                            title = {item.name}
+                            subTitle = {`${item.publisher}, ${item.country}`}
+                            onPress={this.itemOnPress} 
+                />;
+    };
 
-  itemOnPress = item => {
-    if (ConnectionManager.isInternetConnected) {
-      this.props.setBook (item);
-      this.props.navigation.navigate ('BookDetails', item);
-    } else {
-      Alert.alert (
-        'No Internet!!',
-        'Please enable your internet connection to view this',
-        [{text: 'OK', onPress: () => {}}],
-        {cancelable: false}
-      );
+    listItemKeyExtractor = item => {
+        return item.url
     }
-  };
+
+    itemOnPress = (item) => {
+        if (ConnectionManager.isInternetConnected) {
+            this.props.setBook(item)
+            this.props.navigation.navigate('BookDetails', item);
+        }else {
+            Alert.alert (
+                         'No Internet!!',
+                         'Please enable your internet connection to view this',
+                         [{text: 'OK', onPress: () => {}}],
+                         {cancelable: false}
+                         );
+        }
+        
+    }
 
   componentDidMount () {
     this.props.getAllBooks ();
@@ -50,22 +54,15 @@ class BookScreen extends React.Component {
         />
       );
     }
-
-    return (
-      <ContainerList
-        containerStyle={styles.container}
-        headerStyle={[
-          styles.header,
-          {textAlign: this.state.headerTextAlign},
-          {textDecorationLine: this.state.headerTextDecoration},
-          {fontSize: this.state.headerTextFontSize},
-        ]}
-        headerText={this.state.headerText}
-        items={this.props.books}
-        listItem={this.renderListItem}
-      />
-    );
-  }
+   return (
+            <ContainerList
+                containerStyle={styles.container}
+                items={this.props.books}
+                listItem={this.renderListItem}
+                keyExtractor={this.listItemKeyExtractor}
+            />
+        );
+    }
 }
 
 function mapToStateProps (state) {
@@ -84,16 +81,10 @@ function mapDispatchToProps (dispatch) {
   );
 }
 
-const styles = StyleSheet.create ({
-  container: {
-    flex: 1,
-    marginTop: 20,
-  },
-  header: {
-    flex: 0,
-    marginTop: 8,
-    fontWeight: 'bold',
-  },
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    }
 });
 
 export default connect (mapToStateProps, mapDispatchToProps) (BookScreen);

@@ -90,11 +90,9 @@ function mapDispatchToProps (dispatch) {
 const styles = StyleSheet.create ({
   container: {
     flex: 1,
-    marginTop: 20,
   },
   header: {
     flex: 0,
-    marginTop: 8,
     fontWeight: 'bold',
   },
 });
