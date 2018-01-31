@@ -20,8 +20,6 @@ This is a simple react-native app which is show the all books list and house lis
 - Abu Saleh Musa: @puzzlemusa
 - Arnab Kumar Shil: @ruddra
 
-# Contribution
-
 # How to run
 1. run this command: `npm run android-linux` for running this application on Android emulator.
 2. run this command: `react-native run-ios` for running this application on IPhone emulator.
