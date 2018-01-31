@@ -1,22 +1,26 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { Text, View } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, {Component} from 'react';
+import {StyleSheet} from 'react-native';
+import {Text, View} from 'react-native';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import DetailComponent from '../components/DetailComponent';
-import { getCharacterList, getCurrentLord, resetCurrentLord, resetSwornMembers } from '../actions';
+import {
+  getCharacterList,
+  getCurrentLord,
+  resetCurrentLord,
+  resetSwornMembers,
+} from '../actions';
 
 import CharacterList from './CharacterList';
 
 class HouseDetails extends Component {
-
-  componentWillUnmount() {
-    this.props.resetCurrentLord();
-    this.props.resetSwornMembers();
+  componentWillUnmount () {
+    this.props.resetCurrentLord ();
+    this.props.resetSwornMembers ();
   }
 
-  _deleteUnnecessaryKeys(houseInfo) {
+  _deleteUnnecessaryKeys (houseInfo) {
     // Removing unnecessary keys from dict
     delete houseInfo.overlord;
     delete houseInfo.ancestralWeapons;
@@ -26,61 +30,64 @@ class HouseDetails extends Component {
     delete houseInfo.founded;
     delete houseInfo.heir;
     delete houseInfo.seats;
-    return houseInfo
+    return houseInfo;
   }
 
-  showCharList() {
-    if (this.props.house.swornMembers.length > 0) {
+  showCharList () {
+    if (
+      this.props.house.swornMembers &&
+      this.props.house.swornMembers.length > 0
+    ) {
       return (
         <CharacterList
-          navScreen = 'HouseCharacter'
+          navScreen="HouseCharacter"
           navigation={this.props.navigation}
-          headline = {'Sworn Members'}
+          headline={'Sworn Members'}
         />
-      )
+      );
     }
   }
 
-  processHouseInfo() {
+  processHouseInfo () {
     let charUrlList = this.props.house.swornMembers;
     let houseInfo = this.props.house;
-    this.props.getCurrentLord(this.props.house.currentLord);
-    this.props.getCharacterList(charUrlList);
-    houseInfo = this._deleteUnnecessaryKeys(houseInfo)
-    return houseInfo
+    this.props.getCurrentLord (this.props.house.currentLord);
+    this.props.getCharacterList (charUrlList);
+    houseInfo = this._deleteUnnecessaryKeys (houseInfo);
+    return houseInfo;
   }
-  render() {
-    let houseInfo = this.processHouseInfo();
+  render () {
+    let houseInfo = this.processHouseInfo ();
     houseInfo.currentLord = this.props.current_lord;
     return (
       <View style={styles.container}>
-        <DetailComponent
-          title={this.props.house.name}
-          values={houseInfo}
-        />
-        {this.showCharList()}
+        <DetailComponent title={this.props.house.name} values={houseInfo} />
+        {this.showCharList ()}
       </View>
     );
   }
 }
 
-function mapToStateProps(state) {
+function mapToStateProps (state) {
   return {
     house: state.house,
-    current_lord: state.current_lord
-  }
+    current_lord: state.current_lord,
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    getCharacterList: getCharacterList,
-    getCurrentLord: getCurrentLord,
-    resetCurrentLord: resetCurrentLord,
-    resetSwornMembers: resetSwornMembers,
-  }, dispatch);
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators (
+    {
+      getCharacterList: getCharacterList,
+      getCurrentLord: getCurrentLord,
+      resetCurrentLord: resetCurrentLord,
+      resetSwornMembers: resetSwornMembers,
+    },
+    dispatch
+  );
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
   },
@@ -90,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(mapToStateProps, mapDispatchToProps)(HouseDetails);
+export default connect (mapToStateProps, mapDispatchToProps) (HouseDetails);

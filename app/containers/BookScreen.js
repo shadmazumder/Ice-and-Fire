@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {StyleSheet, Alert} from 'react-native';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import ContainerList from "../components/ListComponent";
+import ContainerList from '../components/ListComponent';
 import BasicListItem from '../components/BasicListItem';
 
-import { getAllBooks, setBook } from '../actions/index';
+import {getAllBooks, setBook} from '../actions/index';
+import ConnectionManager from '../services/ConnectionManager';
 
 class BookScreen extends React.Component {
 
@@ -25,26 +26,35 @@ class BookScreen extends React.Component {
     }
 
     itemOnPress = (item) => {
-        this.props.setBook(item)
-        this.props.navigation.navigate('BookDetails', item);
-    }
-
-    componentDidMount() {
-        this.props.getAllBooks();
-    }
-
-    render() {
-        if (this.props.books.length == 0) {
-            return (
-                <Spinner
-                    visible={true}
-                    textContent={"Loading..."}
-                    textStyle={{ color: '#FFF' }}
-                />
-            )
+        if (ConnectionManager.isInternetConnected) {
+            this.props.setBook(item)
+            this.props.navigation.navigate('BookDetails', item);
+        }else {
+            Alert.alert (
+                         'No Internet!!',
+                         'Please enable your internet connection to view this',
+                         [{text: 'OK', onPress: () => {}}],
+                         {cancelable: false}
+                         );
         }
+        
+    }
 
-        return (
+  componentDidMount () {
+    this.props.getAllBooks ();
+  }
+
+  render () {
+    if (this.props.books && this.props.books.length == 0) {
+      return (
+        <Spinner
+          visible={true}
+          textContent={'Loading...'}
+          textStyle={{color: '#FFF'}}
+        />
+      );
+    }
+   return (
             <ContainerList
                 containerStyle={styles.container}
                 items={this.props.books}
@@ -55,17 +65,20 @@ class BookScreen extends React.Component {
     }
 }
 
-function mapToStateProps(state) {
-    return {
-        books: state.books
-    }
+function mapToStateProps (state) {
+  return {
+    books: state.books,
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        getAllBooks: getAllBooks,
-        setBook: setBook
-    }, dispatch);
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators (
+    {
+      getAllBooks: getAllBooks,
+      setBook: setBook,
+    },
+    dispatch
+  );
 }
 
 const styles = StyleSheet.create({
@@ -74,4 +87,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapToStateProps, mapDispatchToProps)(BookScreen);
+export default connect (mapToStateProps, mapDispatchToProps) (BookScreen);

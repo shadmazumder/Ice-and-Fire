@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {StyleSheet} from 'react-native';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
 import BasicListItem from '../components/BasicListItem';
 
-import { setCharacter } from '../actions/index';
+import {setCharacter} from '../actions/index';
 
 class CharacterList extends React.Component {
 
@@ -37,7 +37,7 @@ class CharacterList extends React.Component {
     }
 
     render() {
-        if (this.props.characters.length == 0) {
+        if (this.props.characters && this.props.characters.length == 0) {
             return (
                 <Spinner
                     visible={true}
@@ -65,16 +65,19 @@ class CharacterList extends React.Component {
     }
 }
 
-function mapToStateProps(state) {
-    return {
-        characters: state.characters
-    }
+function mapToStateProps (state) {
+  return {
+    characters: state.characters,
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        setCharacter: setCharacter
-    }, dispatch);
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators (
+    {
+      setCharacter: setCharacter,
+    },
+    dispatch
+  );
 }
 
 const styles = StyleSheet.create({
@@ -94,4 +97,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapToStateProps, mapDispatchToProps)(CharacterList);
+export default connect (mapToStateProps, mapDispatchToProps) (CharacterList);

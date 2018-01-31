@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {StyleSheet} from 'react-native';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import ContainerList from "../components/ListComponent";
 import BasicListItem from '../components/BasicListItem';
 
-import { setBookCharacter } from '../actions/index';
+import {setBookCharacter} from '../actions/index';
 
 class BookCharacterList extends React.Component {
 
@@ -65,16 +65,19 @@ class BookCharacterList extends React.Component {
     }
 }
 
-function mapToStateProps(state) {
-    return {
-        characters: state.book_characters
-    }
+function mapToStateProps (state) {
+  return {
+    characters: state.book_characters,
+  };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        setCharacter: setBookCharacter
-    }, dispatch);
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators (
+    {
+      setCharacter: setBookCharacter,
+    },
+    dispatch
+  );
 }
 
 const styles = StyleSheet.create({
@@ -94,4 +97,6 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapToStateProps, mapDispatchToProps)(BookCharacterList);
+export default connect (mapToStateProps, mapDispatchToProps) (
+  BookCharacterList
+);
