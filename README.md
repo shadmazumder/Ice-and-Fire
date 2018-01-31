@@ -12,5 +12,7 @@ This is a simple react-native app which is show the all books list and house lis
 Please check the following[Google Drive link:](https://drive.google.com/file/d/13CwZBDvJ4QRWeA5h6nL9exiSiMyFwxJg/view?usp=sharing)
 
 
+# Credits:
+[Joakim Skoog ](https://anapioficeandfire.com)
 
 run on real device from linux: `npm run android-linux`
