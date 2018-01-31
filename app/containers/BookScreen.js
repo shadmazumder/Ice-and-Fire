@@ -26,18 +26,8 @@ class BookScreen extends React.Component {
     }
 
     itemOnPress = (item) => {
-        if (ConnectionManager.isInternetConnected) {
-            this.props.setBook(item)
-            this.props.navigation.navigate('BookDetails', item);
-        }else {
-            Alert.alert (
-                         'No Internet!!',
-                         'Please enable your internet connection to view this',
-                         [{text: 'OK', onPress: () => {}}],
-                         {cancelable: false}
-                         );
-        }
-        
+        this.props.setBook(item);
+        this.props.navigation.navigate('BookDetails', item);
     }
 
   componentDidMount () {
