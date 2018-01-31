@@ -21,16 +21,16 @@ This is a simple react-native app which is show the all books list and house lis
 - Arnab Kumar Shil: @ruddra
 
 # Contribution:
-- Shaad Mazumdar: Project Initiation, Project Architecture, List View, List Component, 3rd Party Library Integration(React Native Elements),Flex, Styling, Navigation,Refactoring
-- Asaduzzaman Shuvro: Offline Data(Reading Data from Json), List Component, API Integration(3rd Party Library Integration: APISauce), Details Component
+- Shaad Mazumdar: Project Initiation, Project Architecture, List View, List Component, 3rd Party Library Integration(React Native Elements),Flex, Styling, Navigation,Refactoring, Documentation
+- Asaduzzaman Shuvro: Offline Data(Reading Data from Json), List Component, API Integration(3rd Party Library Integration: APISauce), Details Component, Documentation
 - Abu Saleh Musa: Splash Screen, Navigation, Offline Data(Reading Data from Json), Character List, Bug fixes, List View
-- Arnab Kumar Shil: Project Architecture, Redux, Character List, Details Component, Tests, Bug fixes, 3rd Party Library Integration(Spinner)
+- Arnab Kumar Shil: Project Architecture, Redux, Character List, Details Component, Tests, Bug fixes, 3rd Party Library Integration(Spinner), Documentation
 
-** For details, please check the [issues section](https://github.com/shadmazumder/Ice-and-Fire/issues).
+** For details on contribution, please check the [issues section](https://github.com/shadmazumder/Ice-and-Fire/issues).
 
 ** Project was maintained at [here](https://github.com/shadmazumder/Ice-and-Fire/projects/1).
 
-** Please visit the [wiki](https://github.com/shadmazumder/Ice-and-Fire/wiki) section for more details on this app.
+** Please visit the [wiki](https://github.com/shadmazumder/Ice-and-Fire/wiki) section for more information on this app.
 
 
 # How to run
