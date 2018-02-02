@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import DetailComponent from '../components/DetailComponent';
 import { getBookCharacterList, resetBookCharacters } from '../actions';
 
 import CharacterList from './BookCharacterList';
@@ -16,13 +15,13 @@ class HouseDetails extends Component {
   }
 
   render() {
-      this.props.getCharacterList(this.props.book.characters)
+    this.props.getCharacterList(this.props.book.characters)
     return (
       <View style={styles.container}>
         <CharacterList
-          navScreen = 'BookCharacter'
+          navScreen='BookCharacter'
           navigation={this.props.navigation}
-          headline = {"Characters"}
+          headline={"Characters"}
         />
       </View>
     );

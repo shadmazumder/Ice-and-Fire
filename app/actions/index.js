@@ -199,12 +199,17 @@ export function getBookCharacterList (charUrlList) {
       let connectionManger = new ConnectionManager ();
       connectionManger.getCharacterDetailsWith (characterUrl).then (
         resp => {
-          if (resp.data && resp.data != null) {
+          if (resp.status == 200 && resp.data && resp.data != null) {
             characterList.push (resp.data);
             dispatch ({
               type: ACTION_TYPES.SINGLE_BOOK_CHAR_LIST,
               payload: characterList,
             });
+          } else {
+              dispatch ({
+                  type: ACTION_TYPES.SINGLE_BOOK_CHAR_LIST,
+                  payload: null,
+              });
           }
         },
         error => {
