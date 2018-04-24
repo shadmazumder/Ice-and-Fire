@@ -15,13 +15,13 @@ This is a simple react-native app which is show the all books list and house lis
  - jest 
 
 # Contributions
-- Shaad Mazumdar: @shadmazumder
-- Asaduzzaman Shuvro: @asaduzzaman-shuvro
-- Abu Saleh Musa: @puzzlemusa
-- Arnab Kumar Shil: @ruddra
+- Shaad Mazumdar: [@shadmazumder](https://github.com/shadmazumder)
+- Asaduzzaman Shuvro: [@asaduzzaman-shuvro](https://github.com/asaduzzaman-shuvro)
+- Abu Saleh Musa: [@puzzlemusa](https://github.com/puzzlemusa)
+- Arnab Kumar Shil: [@ruddra](https://github.com/ruddra)
 
 # Contribution:
-- Shaad Mazumdar: Project Initiation, Project Architecture, List View, List Component, 3rd Party Library Integration(React Native Elements),Flex, Styling, Navigation,Refactoring, Documentation
+- Shad Mazumdar: Project Initiation, Project Architecture, List View, List Component, 3rd Party Library Integration(React Native Elements),Flex, Styling, Navigation,Refactoring, Documentation
 - Asaduzzaman Shuvro: Offline Data(Reading Data from Json), List Component, API Integration(3rd Party Library Integration: APISauce), Details Component, Documentation
 - Abu Saleh Musa: Splash Screen, Navigation, Offline Data(Reading Data from Json), Character List, Bug fixes, List View
 - Arnab Kumar Shil: Project Architecture, Redux, Character List, Details Component, Tests, Bug fixes, 3rd Party Library Integration(Spinner), Documentation
