@@ -45,6 +45,9 @@ This is a simple react-native app which is show the all books list and house lis
 # Demo
 <img src="https://github.com/shadmazumder/Ice-and-Fire/raw/master/demo/Ice%20And%20Fire.gif">
 
+# Presentation Slide
++ [Slides](https://docs.google.com/presentation/d/1slBgwBmAPH-kIwGkCiKuQjEBGvitEmzAU0LryqD13Yg/edit?usp=sharing)
++ [Slides Details](https://github.com/shadmazumder/Ice-and-Fire/wiki/Slide-Details)
 
 # API Credit
 We used API from [Joakim Skoog](https://anapioficeandfire.com)
