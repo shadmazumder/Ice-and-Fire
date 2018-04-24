@@ -15,7 +15,7 @@ This is a simple react-native app which is show the all books list and house lis
  - jest 
 
 # Contributions
-- Shaad Mazumdar: [@shadmazumder](https://github.com/shadmazumder)
+- Shad Mazumdar: [@shadmazumder](https://github.com/shadmazumder)
 - Asaduzzaman Shuvro: [@asaduzzaman-shuvro](https://github.com/asaduzzaman-shuvro)
 - Abu Saleh Musa: [@puzzlemusa](https://github.com/puzzlemusa)
 - Arnab Kumar Shil: [@ruddra](https://github.com/ruddra)
