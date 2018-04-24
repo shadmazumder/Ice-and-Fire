@@ -43,7 +43,7 @@ This is a simple react-native app which is show the all books list and house lis
  - Has few tests written
 
 # Demo
-![Ann app of FIre and Ice](https://drive.google.com/uc?id=1_Xofs0k3A6Y_Tqy7in77kclxHpF4vpoF)
+![An app of FIre and Ice](https://drive.google.com/uc?id=1_Xofs0k3A6Y_Tqy7in77kclxHpF4vpoF)
 
 # Presentation Slide
 + [Slides](https://docs.google.com/presentation/d/1slBgwBmAPH-kIwGkCiKuQjEBGvitEmzAU0LryqD13Yg/edit?usp=sharing)
